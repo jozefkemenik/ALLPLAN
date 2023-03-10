@@ -1,0 +1,95 @@
+ap-project-documents-dialogs-delete {
+    .dialog-delete-container {
+        text-align: center;
+    }
+    .dialog-icon {
+        width: 16px;
+        padding-right: 6px;
+        padding-bottom: 1px;
+    }
+    .dialog-delete-container-title,
+    .dialog-delete-container-subtitle,
+    .dialog-delete-container-btns,
+    .dialog-delete-container-message,
+    .dialog-delete-container-error {
+        display: inline-flex;
+        align-items: center;
+        width: 100%;
+        justify-content: center;
+        font-family: Arial;
+    }
+    .dialog-delete-container-title {
+        font-size: 16px;
+        color: #bf0023de;
+    }
+    .dialog-delete-container-subtitle,
+    .dialog-delete-container-message {
+        color: #000000de;
+        font-size: 14px;
+        //margin-bottom: 30px;
+    }
+    .dialog-delete-container-subtitle {
+        font-weight: bold;
+    }
+    .dialog-delete-container-message {
+        margin-bottom: 30px;
+        //not other option how to style this checkbox just to use this
+        /*TODO(mdc-migration): The following rule targets internal classes of checkbox that may no longer apply for the MDC version.*/
+        .mat-checkbox-layout {
+            white-space: normal !important;
+        }
+        /*TODO(mdc-migration): The following rule targets internal classes of checkbox that may no longer apply for the MDC version.*/
+        .mat-checkbox-inner-container {
+            margin: 0 11px;
+        }
+        .dialog-delete-container-message-section {
+            display: flex;
+            .dialog-delete-container-message-checkbox-text {
+                text-align: left;
+            }
+        }
+    }
+
+    .dialog-delete-container-btns {
+        .dialog-delete-container-btns--1 {
+        }
+        .dialog-delete-container-btns--2 {
+            margin-left: 20px;
+        }
+        .dialog-delete-container-btns--1,
+        .dialog-delete-container-btns--2 {
+            width: 100px;
+            height: 34px;
+        }
+    }
+    .dialog-delete-container-error {
+        font-size: 12px;
+        color: #bf0023;
+        background-color: #bf002312;
+        width: 300px;
+        height: 36px;
+    }
+    .show-error-message {
+        visibility: visible;
+    }
+    .hide-error-message {
+        visibility: hidden;
+    }
+    .mat-mdc-tooltip.custom-tooltip {
+        @extend .mat-mcd-tooltip!optional;
+        font-size: 12.5px;
+        font-family: Arial;
+        margin-top: -0px;
+        margin-left: 100px;
+        background-color: #434445;
+        color: white;
+        padding: 6px 16px 6px 16px;
+        overflow: hidden;
+        border-radius: 4px;
+        vertical-align: baseline;
+        text-align: center;
+        text-overflow: initial;
+        max-width: inherit;
+        display: block;
+      }
+}

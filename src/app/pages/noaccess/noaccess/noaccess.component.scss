@@ -1,0 +1,46 @@
+@import "src/alldoc.variables.scss";
+
+ap-noaccess {
+    height:100%;
+    h2 {
+        color: $primary-color;
+    }
+
+    .grandParentContaniner {
+        display: table;
+        margin: 0 auto;
+        height: calc(100vh - 217px);
+    }
+    .parentContainer {
+        display: table-cell;
+        vertical-align: middle;
+    }
+    .no-access-container {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .no-access-icon {
+        height: 50px;
+        width: 50px;
+        background-size: 50px;
+        background-repeat: no-repeat;
+        background-image: url("/assets/images/lock.svg");
+    }
+    .no-access-text-1 {
+        color: #000000de;
+        font-size: 14px;
+        letter-spacing: 0.1;
+        font-weight: bold;
+        margin-top: 14px;
+        font-family: Arial;
+    }
+    .no-access-text-2 {
+        color: #000000de;
+        font-size: 14px;
+        letter-spacing: 0.31;
+        margin-top: 4px;
+        font-family: Arial;
+    }
+}

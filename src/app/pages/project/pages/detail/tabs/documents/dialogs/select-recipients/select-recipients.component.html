@@ -1,0 +1,19 @@
+<ng-container>
+  <div class="dialog-select-recipients-title" [id]="'adms-app-select-recipients-title'">{{"selectRecipients" |
+    translate}}</div>
+  <div class="dialog-select-recipients-subtitle" [id]="'adms-app-select-recipients-subtitle'">{{"whoDoYouWantToSendItTo"
+    | translate}}</div>
+  <div class="dialog-select-recipients-table no-overflow">
+    <ap-table [config]="tableConfig" [data]="dataTable" (action)="onTableAction($event)" style="height:270px">
+    </ap-table>
+  </div>
+  <div class="dialog-select-recipients-btns">
+    <ap-shared-spinner-button [buttonLabel]="'button_send'" [isLoading]="isLoading" [diameter]="20"
+      [mode]="'indeterminate'" [idBtn]="'adms-app-select-recipients-send-btn'" (buttonAction)="send($event)"
+      [class]="(selectedRows && selectedRows?.length > 0) ? 'dialog-select-recipients-send-btn' : 'dialog-select-recipients-send-btn disabled'"
+      [disabled]="!(selectedRows && selectedRows?.length > 0)">
+    </ap-shared-spinner-button>
+    <button mat-stroked-button (click)="cancel()" [id]="'adms-app-select-recipients-cancel-btn'"
+      class="dialog-select-recipients-cancel-btn">{{'button_cancel'|translate}}</button>
+  </div>
+</ng-container>

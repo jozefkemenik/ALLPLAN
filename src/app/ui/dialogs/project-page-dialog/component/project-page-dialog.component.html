@@ -1,0 +1,92 @@
+<!-- CREATE project form -->
+<form [formGroup]="crtForm" *ngIf="data.action === 'dialog_create'">
+  <div  class="dialog-create">
+    <div style="width:361px;position:absolute;margin:-25px 0 0 -25px;" *ngIf="loading">
+      <mat-progress-bar mode="indeterminate" *ngIf="true"></mat-progress-bar>
+    </div>
+    <div style="margin: 0 0 2px 0;">
+      <span  [id]="data.dialogHTML_Id + '-title'" class="generall-dialog-title">{{data.title | translate}}</span>
+    </div>
+
+    <div style="margin-bottom: 5px;"
+      [style]="(f.itemName.errors?.required || f.itemName.errors?.pattern ||
+      f.itemName.errors?.maxlength) && (crtForm.value.itemName.length> 0) ? 'margin-bottom: 5px;' : 'margin-bottom: 1.5rem'">
+      <span class="generall-dialog-subtitle" [id]="data.dialogHTML_Id + '-create-subtitle'">{{data.name}}</span>
+    </div>
+    <div
+      *ngIf="(f.itemName.errors?.required || f.itemName.errors?.pattern || f.itemName.errors?.maxlength) && (crtForm.value.itemName.length > 0)"
+      class="alert-error-visible" role="alert" [id]="data.dialogHTML_Id + '-create-validation-message-container'">
+      <mat-icon matPrefix svgIcon="custom-error" style="color: black;" class="alert-error-icon-visible"
+        [id]="data.dialogHTML_Id + '-create-validation-message-icon'"></mat-icon>
+      <!-- <div class="alert-error-title-visible" *ngIf="f.itemName.errors.required">A ... name is required.</div> -->
+      <!-- <div class="alert-error-title-visible" *ngIf="f.itemName.errors.maxlength">... name must be max {{getDialogConfig().maxLength}} characters</div> -->
+      <div class="alert-error-title-visible" *ngIf="f.itemName.errors.pattern"
+        [id]="data.dialogHTML_Id + '-create-validation-message-text'">{{data.warningNotification | translate}}:
+        {{getDialogConfig().restrictedMessage}}</div>
+    </div>
+    <div mat-dialog-content style="display: flex; flex-direction: column;">
+      <mat-label
+        style="color:#000000B3; text-align: left; margin-bottom: 14px; font: 14px Arial; letter-spacing: 0.31px; padding-left: 10px;"
+        [id]="data.dialogHTML_Id + '-create-input-header'">
+        {{data.inputHeader | translate}}</mat-label>
+      <input matInput type="text" formControlName="itemName" maxlength={{getDialogConfig().maxLength}} style="color: #000000DE; height: 48px; width: 300px; border: 1px solid #000000DE;
+          border-radius: 1px; border-radius: 1px; text-align: left; padding-left: 10px;" class="input-test"
+        [id]="data.dialogHTML_Id + '-create-input'">
+    </div>
+
+    <div mat-dialog-actions align="end" style="margin-top: 20px; display: inline;">
+      <button mat-stroked-button [disabled]="loading || crtForm.value.itemName ===''"
+        [class]="!(crtForm.value.itemName ==='')? 'create-project-create-button' : 'mat-button-inbox-actions-disabled'"
+        style="height: 34px; margin-right: auto;  margin-bottom: 0px;"  (click)="createItem()"
+        [id]="data.dialogHTML_Id + '-create-button-create'">{{'button_create' | translate}}</button>
+      <button mat-stroked-button
+        [class]="!isButton2Disabled()? 'mat-button-inbox-actions' : 'mat-button-inbox-actions-disabled'" style="height: 34px; margin-right: auto;
+    margin-left: 34px;  margin-bottom: 0px;" (click)="cancel()" 
+        [id]="data.dialogHTML_Id + '-create-button-cancel'">{{'button_cancel' | translate}}</button>
+    </div>
+  </div>
+</form>
+<!-- END.. CREATE project form -->
+
+<!-- DELETE project form -->
+
+<div *ngIf="data.action === 'dialog_delete'">
+  <div style="width:346px;position:absolute;margin:-25px 0 0 -25px;" *ngIf="loading">
+    <mat-progress-bar mode="indeterminate" *ngIf="true"></mat-progress-bar>
+  </div>
+
+  <div class="d-flex flex-row w-100 justify-content-center align-items-top">
+    <mat-icon matPrefix svgIcon="custom-attention-red"
+      style="width: 18px;height:16px;"
+      [id]="data.dialogHTML_Id + '-delete-icon-title'">
+    </mat-icon>
+      <span  class="generall-dialog-title-red ml-1" 
+        [id]="data.dialogHTML_Id + '-delete-title'">{{data.title | translate}}</span>
+  </div>
+
+  <div class="mb-4">
+    <span class="generall-dialog-subtitle" [id]="data.dialogHTML_Id + '-delete-subtitle'">{{data.name}}</span>
+  </div>
+
+  <div>
+    <mat-checkbox class="mat-checkbox-deleteDialog" [checked]="delete_checked" (change)="checkDelete($event.checked)"
+      [id]="data.dialogHTML_Id + '-delete-mat-checkbox'">
+      <div class="mat-checkbox-deleteDialog-innerText" [id]="data.dialogHTML_Id + '-delete-mat-checkbox-title'">
+        {{data.message | translate}}.</div>
+    </mat-checkbox>
+  </div>
+
+  <div mat-dialog-actions align="end" style="margin-top: 20px; display: inline;">
+
+    <button mat-stroked-button
+      [class]="!isButton1Disabled()? 'mat-button-inbox-actions' : 'mat-button-inbox-actions-disabled'"
+      style="height: 34px; margin-right: auto; margin-bottom: 0px;"  [disabled]="loading ||!delete_checked"
+      (click)="deleteItem()" [id]="data.dialogHTML_Id + '-delete-button-delete'">{{'button_delete'|translate}}</button>
+    <button mat-stroked-button
+      [class]="!isButton2Disabled()? 'mat-button-inbox-actions' : 'mat-button-inbox-actions-disabled'" style="height: 34px; margin-right: auto;
+margin-left: 34px; margin-bottom: 0px;" (click)="cancel()" 
+      [id]="data.dialogHTML_Id + '-delete-button-cancel'">{{'button_cancel'|translate}}</button>
+  </div>
+</div>
+<!-- END.. DELETE project form -->
+

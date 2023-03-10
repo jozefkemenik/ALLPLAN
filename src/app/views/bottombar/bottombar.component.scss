@@ -1,0 +1,48 @@
+@import "src/alldoc.variables.scss";
+
+ap-bottom-bar {
+  .bottom-bar {
+    border-top: 0.063rem solid $bottom-bar-border-color;
+    height: $bottom-bar-height;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    background: #f9fafb 0% 0% no-repeat padding-box;
+  }
+
+  .bottom-bar-link {
+    margin-right: 3.688rem;
+    font: normal normal normal 10px/16px Arial;
+    letter-spacing: 1.2px;
+    color: #000000de;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-decoration: none;
+    &.underline {
+      text-decoration: underline;
+    }
+  }
+
+  .lang-selector {
+    display: flex;
+    flex-direction: row;
+    margin-left: 5px;
+    align-items: center;
+    justify-content: center;
+
+    .lang-selected {
+    }
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .bottom-bar-link:hover {
+    cursor: pointer;
+    text-decoration: none;
+  }
+}

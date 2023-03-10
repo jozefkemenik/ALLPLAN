@@ -1,0 +1,99 @@
+<mat-accordion *ngIf="!isLoading && (data.length > 0 || data != null)">
+  <!-- <cdk-virtual-scroll-viewport [itemSize]="totalCount" class="example-viewport"> -->
+  <!--used as vertical scrollbar inside expander see scss file as well-->
+  <!-- pointer-events: none;
+  [style.pointerEvents]="canExpandExpansionPanelHeader"
+  -->
+  <mat-expansion-panel [togglePosition]="'before'" style="overflow: hidden; margin-top: 0px; margin-bottom: 0px;"
+    [id]="'adms-'+config.expansionContext+'-expansion-panel-'+(m+1)" *ngFor="let item of data, index as m"
+    [expanded]="item[config.expansionPanelHeader].expanded" (opened)="toggleExpansion(true,item)"
+    (closed)="toggleExpansion(false,item)">
+    <!--insert instead of ngFor cdkVirtualFor when using cdk-virtual-scroll-viewport-->
+    <mat-expansion-panel-header class="expansion-panel-header" style="padding-right: 0px; border:#EFF0F1 solid 1px; background: #EFF0F1 0% 0% no-repeat padding-box;
+         box-shadow: 0px 1px 2px #0000004D; border-radius: 1px; opacity: 1; height: 42px;"
+      [id]="'adms-'+config.expansionContext+'-expansion-panel-header-'+(m+1)">
+      <mat-panel-title [id]="'adms-'+config.expansionContext+'-expansion-panel-title-'+(m+1)"
+        *ngIf="item[config.expansionPanelHeader].name!==undefined && item[config.expansionPanelHeader].name!== null">
+        {{item[config.expansionPanelHeader].name}}
+      </mat-panel-title>
+      <!-- <div> -->
+      <div *ngFor="let icon of item[config.expansionPanelHeader_ActionName]">
+        <button mat-icon-button
+          (click)="$event.stopPropagation(); openDialog($event, icon.action, {name:item[config.expansionPanelHeader].name, id:item[config.expansionPanelHeader].id, 
+          dialogHTML_Id:'adms-'+config.expansionContext+'-expansion-panel-header-'+(m+1)+'-button-icon-'+(icon.id)+'-dialog'})"
+          style="cursor: pointer; border: none; background-color: transparent; margin-left: 30px; padding: 0px; padding-right: 15px;"
+          [disabled]="icon.disabled"
+          [id]="'adms-'+config.expansionContext+'-expansion-panel-header-'+(m+1)+'-button-icon-'+(icon.id)"
+          class="button-expansionPanel-header">
+          <mat-icon [matTooltip]="icon.tooltip|translate" [svgIcon]="icon.icon"
+            style="height: 18px; width: 17px; vertical-align: middle; padding: 0px; color:#000000DE;"
+            [ngClass]="icon.disabled ? '' : 'mat-icon-expansionPanel-header'"
+            (click)="icon.disabled && $event.stopPropagation();"
+            [id]="'adms-'+config.expansionContext+'-expansion-panel-header-'+(m+1)+'-button-mat-icon-'+(icon.id)"
+            matTooltipPosition="below" #tooltip="matTooltip" matTooltipShowDelay="500" matTooltipHideDelay="500"
+            matTooltipClass="custom-tooltip">
+          </mat-icon>
+        </button>
+      </div>
+      <!-- </div> -->
+    </mat-expansion-panel-header>
+
+    <!-- body of expansion panel-->
+    <div *ngIf="isObject(item[config.expansionPanelBody]) && item[config.expansionPanelBody]!==null">
+      <div *ngIf="item[config.expansionPanelBody].length > 0">
+        <div *ngFor="let item2 of item[config.expansionPanelBody], index as n"
+          id="adms-{{config.expansionContext}}-expansion-panel-header-{{m+1}}-body-{{n+1}}" (click)="executeActionBodyPanel($event, { id:item[config.expansionPanelHeader].id, name:item[config.expansionPanelHeader].name, id2:item2.id, name2: item2.name, 
+            dialogHTML_Id:'', canClickOnBodyItem:item2[config.executeActionBodyPanel_click]})">
+          <div id="adms-{{config.expansionContext}}-expansion-panel-header-{{m+1}}-body-{{n+1}}-mark" #bodyMarkedItem2
+            [ngClass]="bodyItemStyle(item2.marked, m+1, n+1)">
+            <div style="margin-right: auto;">
+              <span
+                [ngClass]="item2[config.executeActionBodyPanel_click] ? 'expasion-body-element-span' : 'expasion-body-element-span-disabled'">{{item2.name}}</span>
+            </div>
+            <div style="display: flex;">
+              <div *ngFor="let icon of item[config.expansionPanelBody_ActionName], index as y"
+                style="position: relative; float: right; overflow: hidden;">
+                <button mat-icon-button (mouseover)="openExpansionPanelBodyOnClick=false"
+                  (mouseout)="openExpansionPanelBodyOnClick=true"
+                  [id]="'adms-'+config.expansionContext+'-expansion-panel-header-'+(m+1)+'-body-'+(n+1)+'-button-icon-'+(icon.id)"
+                  style="cursor: pointer; border: none; background-color: transparent; margin-left: 30px; margin-right: 15px; padding: 0px;"
+                  [disabled]="icon.disabled"
+                  (click)="openDialog($event, icon.action, { id:item[config.expansionPanelHeader].id, name:item[config.expansionPanelHeader].name, id2:item2.id, name2: item2.name, 
+                  dialogHTML_Id:'adms-'+config.expansionContext+'-expansion-panel-header-'+(m+1)+'-body-'+(n+1)+'-button-icon-'+(icon.id)+'-dialog'});"
+                  class="button-expansionPanel-body">
+                  <mat-icon [matTooltip]="icon.tooltip|translate" [svgIcon]="icon.icon"
+                    style="height: 18px; width: 17px; vertical-align: middle; padding: 0px; color:#000000DE;"
+                    [ngClass]=" icon.disabled ? '' : 'mat-icon-expansionPanel-body'"
+                    (click)="icon.disabled && $event.stopPropagation()"
+                    [id]="'adms-'+config.expansionContext+'-expansion-panel-header-'+(m+1)+'-body-'+(n+1)+'-button-mat-icon-'+(icon.id)+'-dialog'"
+                    matTooltipPosition="below" matTooltipShowDelay="500" matTooltipHideDelay="500"
+                    matTooltipClass="custom-tooltip">
+                  </mat-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ap-empty-section *ngIf="isEmptyItem2(item[config.expansionPanelBody])" [options]="{
+          textOne:config.emptyExpansionPanelBody.translationText1,
+          textTwo:config.emptyExpansionPanelBody.translationText2, 
+          learnMore:'learnMore',
+          icon:config.emptyExpansionPanelBody.icon}"></ap-empty-section>
+  </mat-expansion-panel>
+</mat-accordion>
+
+  <ap-empty-section *ngIf="!isLoading && (data.length === 0 || data == null)" [options]="{
+    textOne:config.emptyExpansionPanelHeader.translationText1,
+    textTwo:config.emptyExpansionPanelHeader.translationText2, 
+    learnMore:'learnMore',
+    icon:config.emptyExpansionPanelHeader.icon}"></ap-empty-section>
+<div class="expansion-loading" *ngIf="isLoading && (data.length === 0 || data == null)">
+  <div class="col-loading">
+    <div class="row-loading">
+      <mat-spinner></mat-spinner>
+    </div>
+  </div>
+</div>

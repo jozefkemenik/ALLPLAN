@@ -1,0 +1,33 @@
+@import "src/alldoc.variables.scss";
+@import "src/alldoc.theme.scss";
+
+ap-company-member-sidebar-detail {
+    .show-more-link {
+        color: $primary-color;
+        font-size: 14px;;
+        &:hover {
+            text-decoration: underline;
+            text-decoration-color: $primary-color;
+            -moz-text-decoration-color: $primary-color;
+            text-decoration-thickness: 2px;
+            cursor: pointer !important;
+            opacity: 1;
+            color: $primary-color !important;
+        }
+    }
+
+    label {
+      
+        color: rgba(0, 0, 0, 0.87);
+        word-wrap: break-word;
+
+        font-size: 14px;
+        letter-spacing: 0px;
+        display: flex;
+    }
+
+    ap-dynamic-control-main .dyn-c-row {
+
+        justify-content: space-between;
+    }
+}

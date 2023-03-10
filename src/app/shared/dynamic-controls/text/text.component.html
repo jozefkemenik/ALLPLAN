@@ -1,0 +1,11 @@
+<div [ngSwitch]="option.readonly" class="app-text">
+    <div class="app-text--ro" *ngSwitchCase="true">
+        <span  dynamicId>{{model}}</span>
+    </div>
+    <div class="app-text--edit" *ngSwitchCase="false">
+        <mat-form-field appearance="outline" class="w-100">
+            <mat-label *ngIf="option.titleInline">Message</mat-label>
+            <input matInput #model >
+          </mat-form-field>
+    </div>
+</div>

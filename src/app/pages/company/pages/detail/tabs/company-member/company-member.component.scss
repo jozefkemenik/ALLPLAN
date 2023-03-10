@@ -1,0 +1,62 @@
+@import "src/alldoc.variables.scss";
+@import "src/alldoc.theme.scss";
+ap-company-detail {
+    /* TODO(mdc-migration): The following rule targets internal classes of tabs that may no longer apply for the MDC version. */
+    .mat-tab-body-content {
+        overflow: hidden;
+    }
+    .company-info-loading {
+        @extend .spinner-loading;
+        height: calc(100vh - 217px);
+    }
+    .company-info-no-access-icon {
+        height: 50px;
+        width: 50px;
+        background-size: 50px;
+        background-repeat: no-repeat;
+        background-image: url("/assets/images/lock.svg");
+    }
+    .company-info-no-access-list-tile-container {
+        display: inline-flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    .company-info-no-access-text-1 {
+        color: #000000de;
+        font-size: 14px;
+        letter-spacing: 0.1;
+        font-weight: bold;
+        margin-top: 14px;
+        font-family: Arial;
+    }
+    .company-info-no-access-text-2 {
+        color: #000000de;
+        font-size: 14px;
+        letter-spacing: 0.31;
+        margin-top: 4px;
+        font-family: Arial;
+    }
+
+    .grandParentContaniner {
+        display: table;
+        margin: 0 auto;
+        height: calc(100vh - 217px);
+    }
+    .parentContainer {
+        display: table-cell;
+        vertical-align: middle;
+    }
+    .company-info-no-access-container {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .svg-mat-icon {
+        color: #000000FF;
+        cursor: pointer;
+    }
+    .svg-mat-icon-disabled{
+        color: #00000040;
+        cursor: default;
+    }
+}

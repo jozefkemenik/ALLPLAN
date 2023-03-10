@@ -1,0 +1,31 @@
+<div [ngSwitch]="option.readonly" class="ap-long-text">
+  <!-- readonly mode -->
+  <div *ngSwitchCase="true">
+    <div class="app-long-text--ro">
+      <div [ngSwitch]="option.isExpanded">
+        <span  *ngSwitchCase="false" [id]="option.id+'value'">
+          {{ model | ellipsis:option.maxLength}}
+        </span>
+        <span  *ngSwitchCase="true" [id]="option.id+'value'">
+          {{model}}
+        </span>
+      </div>
+    </div>
+    <ap-button-show-more (isExpandedEmitter)="option.isExpanded = $event;" [inputIsExpanded]="option.isExpanded"
+      [inputIsVisible]="model?.length >= option.maxLength? true : false" [id]="option.id+'btn'">
+    </ap-button-show-more>
+  </div>
+
+  <!-- edit mode -->
+  <div *ngSwitchCase="false">
+    <div class="app-long-text--edit">
+      <mat-form-field appearance="fill">
+        <!-- <mat-label>Autosize textarea</mat-label> -->
+        <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+          cdkAutosizeMaxRows="5" [id]="option.id+'value'"></textarea>
+      </mat-form-field>
+    </div>
+    <!-- <div>new : {{editedValue}}</div> -->
+  </div>
+
+</div>

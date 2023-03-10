@@ -1,0 +1,13 @@
+<div class="d-flex flex-row mb-3 w-100 justify-content-center align-items-top">
+
+    <span class="title ml-1">
+        <mat-icon matPrefix svgIcon="custom-attention-red" style="width: 18px;height:16px;">
+        </mat-icon>
+
+        {{'dialogTermsOfUseTitle' | translate}}
+    </span>
+</div>
+<span class="text mb-2">{{'dialogTermsOfUseText' | translate}}</span>
+<mat-dialog-actions align="center">
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>OK</button>
+</mat-dialog-actions>

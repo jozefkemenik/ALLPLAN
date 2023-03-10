@@ -1,0 +1,48 @@
+<div class="loading" *ngIf="loading">
+    <mat-progress-bar mode="indeterminate" *ngIf="true"></mat-progress-bar>
+</div>
+
+
+    <span class="title mb-3">{{'addMember'|translate}}</span>
+
+    <form [formGroup]="form" (ngSubmit)="submit()"  [class.submitted]="submitted">
+        <mat-dialog-content class="mat-typography">
+            <div class="d-flex flex-column  w-100">
+                <mat-form-field  appearance="outline" class="w-100">
+                    <mat-label>{{'email'|translate}}</mat-label>
+                    <textarea dynamicId (input)="inputTa()" class="ta-emails" rows="10"  formControlName="emails"  matInput></textarea>
+                    
+                  </mat-form-field>
+                 
+                   <span class="text-hint">{{'emailInvitationHint'|translate}}</span>
+                
+                  <span class="error-msg text-bolt mt-2" *ngIf="invalidEmails.length">
+                    {{"invalidEmails" | translate}}:
+                  </span>
+                  <ul class="error-msg my-0"><li *ngFor="let item of invalidEmails">
+                    {{item}}            
+                  </li></ul>
+                  <span class="error-msg text-bolt mt-2" *ngIf="(form.controls.emails.touched || submitted) && form.controls.emails.hasError('required')">
+                        {{'emailRequired' | translate }}
+                  </span>
+
+                <mat-form-field dynamicId appearance="outline" class="select-role mt-2">
+                    <mat-label>{{'selectProjectRole'|translate}}</mat-label>
+                    <mat-select formControlName="role">
+                        <mat-option class="matOptionBtnSelect" *ngFor="let role of roles" [value]="role.value"
+                           >{{role.viewValue| translate}}
+                        </mat-option>
+                    </mat-select>
+                   
+                </mat-form-field>
+                <span *ngIf="(form.controls.role.touched || submitted) && form.controls.role.hasError('required')" class="error-msg">
+                    {{'roleRequired' | translate }}</span>
+
+            </div>
+        </mat-dialog-content>
+        <mat-dialog-actions align="end">
+      
+            <button dynamicId mat-stroked-button [mat-dialog-close]="true">{{'button_cancel'|translate}}</button>
+            <button dynamicId mat-stroked-button type="submit" cdkFocusInitial [disabled]="loading" mat-button >{{'button_send'|translate}}</button>
+        </mat-dialog-actions>
+    </form>

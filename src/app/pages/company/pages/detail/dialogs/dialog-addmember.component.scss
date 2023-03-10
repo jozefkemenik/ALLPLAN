@@ -1,0 +1,71 @@
+@import "src/alldoc.variables.scss";
+.dialog-addmember {
+    min-width: 500px;
+
+
+    
+    .ta-emails{
+        text-decoration: underline;  
+         line-height: 1.2rem;
+    }
+    .text-hint{
+        word-break: break-all;
+    }
+    .text-bolt{
+        font-weight: bold;
+    }
+    /* TODO(mdc-migration): The following rule targets internal classes of slide-toggle that may no longer apply for the MDC version.*/
+    .mat-slide-toggle-bar{
+        margin-left: 8px;
+    }
+    .mat-mdc-slide-toggle.mat-checked {
+        /* TODO(mdc-migration): The following rule targets internal classes of slide-toggle that may no longer apply for the MDC version.*/
+        .mat-slide-toggle-bar{
+            background-color: rgba($primary-color,0.54);
+        }
+        /* TODO(mdc-migration): The following rule targets internal classes of slide-toggle that may no longer apply for the MDC version.*/
+        .mat-slide-toggle-thumb {
+            background-color: $primary-color;
+        }
+}
+
+    // .submitted .mat-input-element.ng-invalid {
+    //     border: none!important;
+    //   }
+
+      .mat-mdc-form-field {
+        font-size: 14px;
+    }
+    /* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version.*/
+    .mat-form-field-wrapper{
+        padding-bottom: 0;
+        .error-msg{
+            position: absolute;
+            bottom: -20px;
+            left: -10px;
+        }
+    }
+    .loading{
+        width:499px;;
+        position:absolute;
+        margin:-25px 0 0 -25px;
+    }
+    width: 500px;
+    .mat-mdc-dialog-container {
+        .title {
+            display: block;
+            font: normal normal normal 16px/20px Arial;
+            letter-spacing: 0.32px;
+            font-weight:bold ;
+            opacity: 1;
+            text-align: center;
+        }
+    }
+    .text {
+        display: block;
+        text-align: center;
+        font: normal normal normal 14px/20px Arial;
+        letter-spacing: 0.28px;
+        color: #000000DE;
+    }
+}

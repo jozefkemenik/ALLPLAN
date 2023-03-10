@@ -1,0 +1,31 @@
+@import "src/alldoc.variables.scss";
+.iframe-dialog {
+    min-width:800px;
+    height:calc(100% - 100px);
+    // display: flex;
+    // width: 100%;
+    // height: 100%;
+    // flex-direction: column;
+    // justify-content: center;
+    // align-items: center;
+    background-color:#F9FAFB;
+    .content {
+        .title {
+            text-align: left;
+            font: normal normal bold 20px/24px Arial;
+            letter-spacing: 0.16px;
+            color: #000000DD;
+        }
+
+ 
+        iframe{
+            background-color: #fff;
+            border: 1px solid #E1E2E3;
+            width: 100%;
+   
+        }
+        .action-box{
+
+        }
+    }
+}

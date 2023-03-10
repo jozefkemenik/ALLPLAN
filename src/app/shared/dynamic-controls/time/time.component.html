@@ -1,0 +1,8 @@
+<div [ngSwitch]="option.readonly" class="app-time">
+    <div class="app-time--ro" *ngSwitchCase="true">
+        <span  [id]="option.id+'value'">{{model}}</span>
+    </div>
+    <div class="app-time--edit" *ngSwitchCase="false">
+        <span   [id]="option.id+'value'">{{model}}</span>
+    </div>
+</div>

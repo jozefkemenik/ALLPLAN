@@ -1,0 +1,37 @@
+<h2 mat-dialog-title>Translation Management</h2>
+<mat-dialog-content class="mat-typography">
+  <div>
+    <label class="header">Export translations</label>
+    <hr>
+    <button mat-button class="mat-stroked-button " (click)="exportAll()">ALL</button>
+    <button mat-button class="mat-stroked-button ml-2" *ngFor="let lang of ts.languages"
+      (click)="export(lang.icon)">{{lang.text | translate | titlecase}}</button>
+  </div>
+  <div class="mt-5">
+    <label class="header">Import translations:</label>
+    <hr>
+
+    <button mat-button class="mat-stroked-button" (click)="fileUpload.click()">Auto</button>
+
+
+
+    <input type="file" class="hidden" [accept]="requiredFileType" (change)="onFileSelected($event)" #fileUpload>
+    <span class="ml-1"><b>File:</b> {{fileName || "No file uploaded yet."}}</span>
+    <div *ngIf="fileName" class="mt-2">
+      <button mat-button class="mat-stroked-button" (click)="generateJson()">Generate Json</button>
+      <ul *ngIf="logs">
+        <li *ngFor="let log of logs">{{log}}</li>
+      </ul>
+    </div>
+
+  </div>
+</mat-dialog-content>
+
+
+
+
+<mat-dialog-actions align="end">
+  <!-- <button mat-button mat-dialog-close>Logout</button> -->
+
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>OK</button>
+</mat-dialog-actions>

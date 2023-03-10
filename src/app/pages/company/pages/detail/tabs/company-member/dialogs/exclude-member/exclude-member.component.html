@@ -1,0 +1,35 @@
+<div class="dialog-exclude-member-container">
+    <div class="dialog-exclude-member-container-title">
+      <mat-icon class="dialog-icon" svgIcon="custom-attention-red">
+      </mat-icon>
+      <span>{{'excludeMember' |translate}}</span>
+    </div>
+    <div class="dialog-exclude-member-container-subtitle" [matTooltip]="subtitle" matTooltipPosition="below"
+      #tooltip="matTooltip" matTooltipShowDelay="500" matTooltipHideDelay="500"
+      [matTooltipDisabled]="subtitle?.length > 42 ? false : true" matTooltipClass="custom-tooltip">
+      {{subtitle|ellipsis:42}}</div>
+    <div class="dialog-exclude-member-container-message">
+      <section class="dialog-exclude-member-container-message-section">
+        <mat-checkbox class="dialog-exclude-member-container-message-checkbox" [(ngModel)]="checked">
+        </mat-checkbox>
+        <span class="dialog-exclude-member-container-message-checkbox-text">{{'executeMemberMessage'
+          |translate}}</span>
+      </section>
+    </div>
+    <div></div>
+    <div class="dialog-exclude-member-container-btns">
+      <!-- <button mat-stroked-button class="dialog-exclude-member-container-btns--1" [disabled]="false"
+        (click)="sendRequest('delete')" id="adms-apProjectDocumentsDialogsDeleteBtnDelete" [disabled]="!checked"
+        [mat-dialog-close]="'delete'">{{
+        'button_delete'| translate}}
+      </button> -->
+      <ap-shared-spinner-button [buttonLabel]="'button_delete'" [isLoading]="isLoading" [diameter]="20"
+        [mode]="'indeterminate'" [idBtn]="'adms-apCompanyMemberDialogsExcludeMemberButtonWithSpinner'"
+        (buttonAction)="sendRequest('delete')" [disabled]="!checked">
+      </ap-shared-spinner-button>
+      <button mat-stroked-button class="dialog-exclude-member-container-btns--2" [disabled]="false"
+        id="adms-apCompanyMemberDialogsExcludeMemberBtnCancel" (click)="sendRequest('cancel')">{{
+        'button_cancel'| translate}}
+      </button>
+    </div>
+  </div>

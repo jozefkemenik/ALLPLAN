@@ -1,0 +1,47 @@
+<div *ngIf="disabled">
+    <div class="grandParentContaniner">
+        <div class="parentContainer">
+            <ap-empty-section *ngIf="disabled" [options]="config">
+            </ap-empty-section>
+        </div>
+    </div>
+</div>
+
+<ng-container *ngIf="!disabled">
+
+    <ap-sidebar [(isOpen)]="isOpenSidebar" [sidebarContent]="sidebarContent" [sidebarFooter]="sidebarFooter"
+        [title]="sidebarData?.name">
+        <div class="project-participants-content no-overflow">
+            <ap-table [calcHeight]="193" [config]="tableConfig" [data]="dataTable" [search]="search"
+                [isOpenSidebar]="isOpenSidebar" (action)="onTableAction($event)"></ap-table>
+
+        </div>
+    </ap-sidebar>
+
+    <ng-template #sidebarContent>
+        <ap-project-participants-sidebar-detail [loading]="dataLoading" [isEdit]="isEdit" [data]="sidebarData"
+            (change)="onChange($event)" [projectId]="projectId"></ap-project-participants-sidebar-detail>
+    </ng-template>
+
+    <ng-template #sidebarFooter>
+        <div class="mx-3 my-2 d-flex flex-row align-items-end justify-content-end w-100">
+            <div [matTooltip]="'youDontHaveRight'|translate" [matTooltipDisabled]="canEdit" matTooltipShowDelay="500"
+                matTooltipHideDelay="500" matTooltipClass="custom-tooltip">
+
+                <button *ngIf="!isEdit" [disabled]="!canEdit" mat-stroked-button (click)="isEdit=true"
+                    class="mat-focus-indicator mat-stroked-button mat-button-base" dynamicId>{{'button_edit' |
+                    translate}}</button>
+            </div>
+            <button *ngIf="isEdit" mat-stroked-button (click)="isEdit=false"
+                class="mat-focus-indicator mat-stroked-button mat-button-base" dynamicId>{{'button_cancel' | translate
+                }}</button>
+
+
+            <button *ngIf="isEdit" mat-stroked-button (click)="save()"
+                class=" mx-2 mat-focus-indicator mat-stroked-button mat-button-base" dynamicId>{{'button_save' |
+                translate
+                }}</button>
+
+        </div>
+    </ng-template>
+</ng-container>

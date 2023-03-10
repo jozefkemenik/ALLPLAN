@@ -1,0 +1,58 @@
+<main class="ap-login">
+  <div class="progress">
+    <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+  </div>
+  <div class="login-left-container">
+    <img src="assets/images/exchange_login_banner.png" />
+  </div>
+  <div class="login-right-container">
+    <img class="login-right-logo"
+      src="https://www.allplan.com/typo3conf/ext/allplan_template/Resources/Public/Images/Logos/allplan-logo.svg" />
+    <div class="login-form-container">
+      <div class="error-box">
+        <p *ngIf="showError" class="error" [innerHtml]="'unrecognizedEmailPassword'|translate"></p>
+      </div>
+      <form [formGroup]="form" (ngSubmit)="submit()" class="login-form"
+        [class.submitted]="submitted">
+        <div class="login-user">
+          <input dynamicId type="email" matInput placeholder="{{'email'|translate}}"
+            formControlName="username">
+
+          <span *ngIf="submitted && form.controls.username.errors?.required" class="error-msg">
+            {{'emailRequired' | translate }}</span>
+          <span *ngIf="submitted && form.controls.username.hasError('email')" class="error-msg">
+            {{'emailValid' | translate }}</span>
+        </div>
+        <div class="login-password">
+          <input  dynamicId [type]="hide ? 'password' : 'text'"
+            matInput placeholder="{{'loginPagePassword'| translate}}" formControlName="password">
+          <button dynamicId mat-icon-button type="button" (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide" class="login-password-visibility">
+            <mat-icon [svgIcon]="hide ? 'custom-show' : 'custom-hide'">
+            </mat-icon>
+          </button>
+          <span *ngIf="submitted && form.controls.password.errors?.required" class="error-msg">{{'pwdRequired' | translate}}
+          </span>
+        </div>
+        <div class="login-remember-me">
+          <mat-checkbox dynamicId [(ngModel)]="checkedRememberme"
+            formControlName="rememberme">
+            {{'loginPageRememberMe' | translate }}
+          </mat-checkbox>
+
+          <a [href]="linkForgetPwd" class="login-forgot-password" dynamicId>
+            {{'loginPageForgotPwd'|translate}}
+          </a>
+        </div>
+
+        <button dynamicId  type="submit" class="login-button"
+          mat-button>{{'loginPageLoginBtn'|translate}}</button>
+
+
+        <div class="login-register">
+          <span>{{'loginPageNewHere'|translate}}</span>&nbsp;<a dynamicId [href]="linkRegister"> {{'loginPageRegister'|translate}}</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>

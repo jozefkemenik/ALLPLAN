@@ -1,0 +1,85 @@
+@import "src/alldoc.variables.scss";
+@import "src/alldoc.theme.scss";
+app-general-dialog{
+.generall-dialog-title {
+    text-align: center;
+    font: normal normal normal 16px Arial;
+    letter-spacing: 0.32px;
+    color: #000000de;
+    opacity: 1;
+}
+.generall-dialog-subtitle {
+    letter-spacing: 0.1px;
+    color: #000000de;
+    text-align: center;
+    font: normal normal bold 14px Arial;
+    opacity: 1;
+    padding: 0px;
+}
+
+.alert-error-visible {
+    background: #bf002312;
+    margin-bottom: 6px;
+    padding: 0px;
+    display: inline-flex;
+    align-content: center;
+    align-items: center;
+    width: 300px;
+    height: 36px;
+}
+.alert-error-title-visible {
+    letter-spacing: 0.42px;
+    color: #bf0023;
+    text-align: center;
+    font: 12px Arial;
+    opacity: 1;
+}
+.alert-error-icon-visible {
+    width: 18px;
+    margin-right: 8px;
+    margin-left: 5px;
+    margin: 9px 8px 9px 5px;
+}
+.generall-dialog-mat-form-field .mat-mdc-form-field-wrapper {
+    margin: 0px;
+}
+/*TODO(mdc-migration): The following rule targets internal classes of checkbox that may no longer apply for the MDC version.*/
+.mat-checkbox-deleteDialog {
+    font: 14px Arial;
+    letter-spacing: 0.31px;
+    text-align: left;
+}
+/*TODO(mdc-migration): The following rule targets internal classes of checkbox that may no longer apply for the MDC version.*/
+.mat-checkbox-layout {
+    white-space: normal;
+    width: 296px;
+}
+/*TODO(mdc-migration): The following rule targets internal classes of checkbox that may no longer apply for the MDC version.*/
+.mat-checkbox-inner-container {
+    margin-top: 6px;
+    margin-right: 11px;
+}
+
+.generall-dialog-title-red {
+    font: 16px Arial;
+    color: #bf0023de;
+}
+
+//#adms-project-expansion-panel-header-1-button-icon-1-dialog-create-matFormField > div > div.mat-form-field-flex.ng-tns-c68-29 > div.mat-form-field-infix.ng-tns-c68-29
+// .mat-form-field-appearance-outline .mat-form-field-infix {
+//     padding: 0px;
+//     height: 48px;
+//     display: flex;
+//     align-items: center;
+// }
+// .mat-form-field-outline {
+//     padding: 0px;
+//     height: 48px;
+// }
+/*
+    padding: 0px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+*/
+}

@@ -1,0 +1,10 @@
+
+    <h2 mat-dialog-title>{{'currentProjects'|translate}}</h2>
+    <ap-table [config]="tableConfig" [data]="dataTable" (action)="onTableAction($event)" style="height: calc(100% - 140px);">
+    </ap-table>
+
+
+   <div class="d-flex flex-row w-100">
+    <button  class="ml-auto" [mat-dialog-close]="true" mat-stroked-button >{{'close'|translate}}</button>
+   </div>
+

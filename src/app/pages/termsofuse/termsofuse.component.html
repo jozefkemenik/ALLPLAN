@@ -1,0 +1,21 @@
+
+
+<div class="content" *ngIf="!loading">
+    <div class="d-flex flex-column" >
+        <span class="title mb-3">{{'acceptTermsOfUse'| translate}}</span>
+        <span class="subtitle mb-4">{{'textTermsOfUse'| translate}}</span>
+    </div>
+    <iframe [src]="urlPath"  #iframe [calcHeight]="290"
+   frameborder="0" wmode="transparent"></iframe>
+   <div class="action-box mt-3 ">
+    <button mat-stroked-button (click)="accept()"
+    >{{'accept'|translate}}</button>
+    <button mat-stroked-button class="ml-2" (click)="openDialog()"
+    >{{'dontAccept'|translate}}</button>
+    </div>
+</div>
+
+<div *ngIf="loading" class="d-flex h-100 flex-fill justify-content-center align-items-center">
+    <div class="global-spinner-grow ">
+    </div>
+  </div>

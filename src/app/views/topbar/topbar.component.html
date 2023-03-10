@@ -1,0 +1,76 @@
+<mat-toolbar class="top-bar">
+  <div class="top-bar-content-wrapper">
+    <img class="company-logo-small" src="assets/images/logo_black.png" (click)="doLinkClick(0)" style="height: 40%;">
+    <span style="font-weight: 500; padding-left: 0.40rem; font-size: 1.0rem; color: #000000;">Allplan Exchange</span>
+    <div class="div-centered div-links-centered" *ngIf="!showPartialTopMenu">
+      <button [disabled]="link.key == 'news'" mat-button *ngFor="let link of linksWithId" [class]="{'button-link-selected': link.selected,'button-link-deselected': !link.selected, 'button-link': !link.selected, 'link0': link.id == 0, 'link1': link.id == 1, 
+      'link2': link.id == 2}" (click)="doLinkClick(link.id)" dynamicId>{{link.name|translate}}
+        <!-- <a (click)="doLinkClick(link.id)" id="adms-topbar-buttonlink-{{link.key}}">{{link.name}}</a> -->
+      </button>
+    </div>
+    <div style=" display: flex; align-items: center;" *ngIf="!showPartialTopMenu">
+      <a class="help-link" title="{{'help'|translate}}" routerLink="help" target="_blank" id="topbar-help-link">
+        <mat-icon svgIcon="custom-help"></mat-icon>
+      </a>
+
+      <div class="mr-4" *ngIf="showTestMenu">
+        <button class="top-bar-username" mat-button xPosition="after" [matMenuTriggerFor]="testmenu">
+          <!-- {{userFullName().length > 30 ? userFullName().substring(0,30)+"..." : userFullName()}}&nbsp;&nbsp; -->
+          Test
+          <mat-icon svgIcon="google_icons_expand_more_black"></mat-icon>
+        </button>
+        <mat-menu #testmenu="matMenu">
+          <button mat-menu-item (click)="authService.testDamageToken(false)">
+            make session expired (destroy "token")
+          </button>
+          <button mat-menu-item (click)="authService.testDamageToken(true)">
+            make unable to refresh "token" (destroy "refreshToken")
+          </button>
+          <button mat-menu-item (click)="authService.refreshToken()">
+            trigger refresh token (it udpates "token" with "refreshToken")
+          </button>
+          <button mat-menu-item (click)="ldp.open()">
+            Logs
+          </button>
+          <button mat-menu-item (click)="ddp.open()">
+            ID list
+          </button>
+          <button mat-menu-item (click)="tdp.open()">
+            Translations
+          </button>
+
+        </mat-menu>
+      </div>
+
+
+
+      <img class="profile-image" src="assets/images/useravatar.svg">
+      <div *ngIf="!isUserLogOut">
+        <button class="top-bar-username" mat-button xPosition="after" [matMenuTriggerFor]="menu"
+          id="adms-topbar-button-menu">
+          <!-- {{userFullName().length > 30 ? userFullName().substring(0,30)+"..." : userFullName()}}&nbsp;&nbsp; -->
+          {{userFullName|ellipsis:30}}&nbsp;&nbsp;
+          <mat-icon svgIcon="google_icons_expand_more_black"></mat-icon>
+
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="doLogout()" dynamicId="nav-topbar-user">
+            <!-- <mat-icon style="vertical-align: top;">logout</mat-icon> -->
+            <span>{{'logout' |translate}}</span>
+          </button>
+          <button mat-menu-item (click)="showProfile()" dynamicId="nav-topbar-user">
+            <!-- <mat-icon style="vertical-align: top;">logout</mat-icon> -->
+            <span>{{'myProfile' |translate}}</span>
+          </button>
+        </mat-menu>
+
+      </div>
+      <div *ngIf="isUserLogOut" class="logOutBtnContainer">
+        <button dynamicId mat-stroked-button class="logOutBtn" (click)="goToLogin()">{{'loginPageLoginBtn'|translate}}</button>
+      </div>
+
+
+
+    </div>
+  </div>
+</mat-toolbar>

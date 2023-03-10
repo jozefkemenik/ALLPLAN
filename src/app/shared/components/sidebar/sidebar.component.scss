@@ -1,0 +1,106 @@
+@import "src/alldoc.variables.scss";
+
+.ap-sidebar {
+  mat-sidenav.mat-drawer {
+    min-width: 418px;
+    max-width: 418px;
+    border-right: none;
+
+    text-align: center;
+    overflow: hidden;
+
+    background: #ffffff 0% 0% no-repeat padding-box;
+    box-shadow: -2px 0px 6px #00000029 !important;
+    border: 1px solid #e1e2e3;
+    border-radius: 1px;
+    opacity: 1;
+
+    .mat-drawer-inner-container {
+      overflow: hidden;
+    }
+
+    .ap-sidebar-container {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+
+      .ap-sidebar-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        height: 50px;
+        width: 100%;
+        .title {
+          margin-left:13px;
+          font-weight: bold;
+          justify-content: flex-start;
+          align-items: center;
+          display: flex;
+        }
+      }
+
+ 
+
+      .ap-sidebar-body {
+        flex: 1;
+        /* takes the remaining height of the "container" div */
+        overflow: auto;
+        /* to scroll just the "main" div */
+      }
+
+      .ap-sidebar-footer {
+        display: flex;
+        flex-direction: row;
+      }
+    }
+
+    .close-icon {
+      margin-right: 10px;
+      width: 12px;
+      cursor: pointer;
+      height: 100%;
+    }
+
+    .close-icon-abs {
+      cursor: pointer;
+      width: 10px;
+      position: absolute;
+      right: 10px;
+      top: 10px;
+    }
+
+    .mat-mdc-tab-header {
+      width: calc(100% - 20px);
+
+      .mat-mdc-tab-link {
+        height: 48px;
+        padding: 0 6px;
+        cursor: pointer;
+        box-sizing: border-box;
+
+        min-width: 120px;
+        text-align: center;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        white-space: nowrap;
+        position: relative;
+
+        font: normal normal normal 16px/24px Arial;
+        letter-spacing: 0.53px;
+        color: #000000B2;
+        opacity: 1;
+      }
+      .mat-mdc-tab-link.disabled {
+        color: #0000004c;
+      }
+      .mat-mdc-tab-link.active {
+        color: #000000de;
+      }
+    }
+
+    .mat-mdc-tab-nav-bar.mat-primary .mat-ink-bar {
+      background-color: $primary-color;
+    }
+  }
+}

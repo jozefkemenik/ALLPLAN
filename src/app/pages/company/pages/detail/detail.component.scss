@@ -1,0 +1,49 @@
+ap-company-detail {
+    height: 100%;
+    width: 100%;
+    /*TODO(mdc-migration): The following rule targets internal classes of tabs that may no longer apply for the MDC version.*/
+    .mat-tab-body-content {
+        overflow: hidden;
+    }
+    .tabs-wrapper {
+        position: relative;
+    }
+    .right-action-panel {
+        position: absolute;
+        right: 10px;
+        top: -2px;
+        z-index: 1;
+        width: 400px;
+        height: 50px;
+    }
+    /*TODO(mdc-migration): The following rule targets internal classes of tabs that may no longer apply for the MDC version.*/
+    .mat-tab-right-bar {
+        //background-color: red;
+        position: absolute;
+        right: 10px;
+        top: -2px;
+        z-index: 1;
+        width: 400px;
+        height: 50px;
+    }
+    /*TODO(mdc-migration): The following rule targets internal classes of tabs that may no longer apply for the MDC version.*/
+    .mat-tab-right-bar > * {
+        z-index: 1;
+    }
+    /*TODO(mdc-migration): The following rule targets internal classes of tabs that may no longer apply for the MDC version.*/
+    .mat-tab-right-bar-child,
+    .mat-tab-right-bar-child-button,
+    .mat-tab-right-bar-child-simple-dropdown {
+        display: flex;
+        height: inherit;
+        float: right;
+        align-items: center;
+    }
+    /*TODO(mdc-migration): The following rule targets internal classes of tabs that may no longer apply for the MDC version.*/
+    .mat-tab-right-bar-child-simple-dropdown {
+        margin-top: 5px;
+    }
+    .btn-mat-icon-2 {
+        text-align: center;
+    }
+}

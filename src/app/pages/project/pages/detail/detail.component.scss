@@ -1,0 +1,175 @@
+@import "src/alldoc.variables.scss";
+.company-project-detail {
+    padding-top: 5px;
+    .projectPage-matFormField-search {
+        height: 32px;
+        width: 258px;
+        color: #000000b3;
+        border: 1px solid #000000b3;
+        margin-left: 24px;
+        margin-right: 24px;
+
+        opacity: 1;
+        /* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version.*/
+        .mat-form-field-infix {
+            border: 0px !important;
+        }
+        /* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version.*/
+        .mat-form-field-underline {
+            display: none;
+        }
+    }
+
+    // //change only border color
+    // .projectPage-matFormField-search:hover {
+    //     border: 1px solid #000000de;
+    // }
+
+    // //change text inside border
+    // .projectPage-matFormField-search:hover .mat-form-field-label {
+    //     color: #000000de;
+    // }
+
+    .projectPage-matFormField-search:active {
+        border: 1px solid #056363;
+    }
+
+    // //change color of border around input
+    // .mat-form-field.mat-focused {
+    //     border: 1px solid #056363;
+    // }
+
+    // //change only text
+    // .mat-form-field.mat-focused .mat-form-field-label {
+    //     color: #0000004d;
+    // }
+
+    .projectPage-matFormField-search-disabled {
+        @extend .projectPage-matFormField-search;
+        opacity: 0.3;
+    }
+
+    .projectPage-search-input {
+        display: flex;
+    }
+
+    .projectPage-search-input.mat-icon {
+        color: $primary-color;
+        width: 17.59px;
+        height: 17.59px;
+    }
+
+    //search icon
+    /* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version.*/
+    .mat-form-field-suffix.ng-star-inserted {
+        //margin-right: 11px;
+    }
+
+    .search-input-buttons {
+        @extend .mat-icon-button !optional;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        -o-border-radius: 0;
+        border-radius: 0;
+        border: 0;
+        opacity: 1;
+    }
+
+    .search-input-buttons:hover {
+        background-color: #eff0f1;
+    }
+
+    .search-input-buttons:focus {
+        background-color: #e0f1f3;
+        color: #000000de;
+    }
+    /* TODO(mdc-migration): The following rule targets internal classes of tabs that may no longer apply for the MDC version.*/
+    .mat-tab-right-bar {
+        //background-color: red;
+        position: absolute;
+        right: 10px;
+        top: -2px;
+        z-index: 1;
+        width: 400px;
+        height: 50px;
+    }
+    /* TODO(mdc-migration): The following rule targets internal classes of tabs that may no longer apply for the MDC version.*/
+    .mat-tab-right-bar > * {
+        z-index: 1;
+    }
+
+    .projectPageDetail-mat-tab-group > * {
+        z-index: -2;
+    }
+    /* TODO(mdc-migration): The following rule targets internal classes of tabs that may no longer apply for the MDC version.*/
+    .mat-tab-right-bar-button {
+        background-color: transparent;
+        border: none;
+        padding: 0px;
+        padding-left: 13.5px;
+    }
+
+    // .project-documents-multidownload-mat-icon {
+    //     width: 18px;
+    //     padding-right: 30px;
+    // }
+
+    // .mat-tab-right-bar-button-icon {
+    //     @extend .project-documents-multidownload-mat-icon;
+    //     cursor: pointer;
+    // }
+
+    // .mat-tab-right-bar-button-icon-disabled {
+    //     @extend .project-documents-multidownload-mat-icon;
+    //     cursor: default;
+    // }
+    /* TODO(mdc-migration): The following rule targets internal classes of tabs that may no longer apply for the MDC version.*/
+    .mat-tab-right-bar-child,
+    .mat-tab-right-bar-child-report,
+    .mat-tab-right-bar-child-simple-dropdown {
+        display: flex;
+        height: inherit;
+        float: right;
+        align-items: center;
+    }
+}
+
+ap-project-participants {
+    /* TODO(mdc-migration): The following rule targets internal classes of tabs that may no longer apply for the MDC version.*/
+    .mat-tab-body-content {
+        overflow: hidden;
+    }
+}
+
+ap-projectPageDetail {
+    .project-documents-multidownload-mat-icon {
+        width: 18px;
+        padding-right: 30px;
+    }
+    /* TODO(mdc-migration): The following rule targets internal classes of tabs that may no longer apply for the MDC version.*/
+    .mat-tab-right-bar-button-icon {
+        @extend .project-documents-multidownload-mat-icon;
+        cursor: pointer;
+    }
+    /* TODO(mdc-migration): The following rule targets internal classes of tabs that may no longer apply for the MDC version.*/
+    .mat-tab-right-bar-button-icon-disabled {
+        @extend .project-documents-multidownload-mat-icon;
+        cursor: default;
+    }
+    //custom settings for button with spinner, copy and change settings from button with spinner to change style
+    /* TODO(mdc-migration): The following rule targets internal classes of tabs that may no longer apply for the MDC version.*/
+    .mat-tab-right-bar-child-report {
+        .spanSpinner {
+            position: absolute;
+            top: 0px;
+            left: 28px;
+        }
+    }
+    .progress {
+        height: calc(100vh - 106px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+}

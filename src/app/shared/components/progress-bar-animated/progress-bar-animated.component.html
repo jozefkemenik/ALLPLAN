@@ -1,0 +1,21 @@
+<ng-container *ngIf="data">
+  <ng-container *ngIf="counter$ | async as progress">
+    <div class="progress-bar-container">
+      
+      <div class="progress-bar-border" [style.width]="data.tagWidth + 'px'">
+        <ng-container *ngIf="data.percentage > 6.99">
+          <div class="progress-bar-inside-big" [style.width.px]="progress">{{ count < data.tagMaxWidth ?
+              (percentageDone+'%') : data.innerText}}</div>
+        </ng-container>
+
+        <ng-container *ngIf="data.percentage < 7">
+          <div class="progress-bar-inside-small" [style.width.px]="progress"></div>
+          <div class="progress-bar-inside-small-number">{{ count < data.tagMaxWidth ? (count+'%') :
+              data.innerText}}</div>
+        </ng-container>
+      </div>
+
+      <div class="progress-bar-bottom"> {{data.bottomText}} </div>
+    </div>
+  </ng-container>
+</ng-container>

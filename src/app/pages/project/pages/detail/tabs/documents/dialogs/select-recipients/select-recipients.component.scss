@@ -1,0 +1,46 @@
+app-select-recipients {
+    .dialog-select-recipients-title,
+    .dialog-select-recipients-subtitle {
+        font-family: Arial;
+    }
+    .dialog-select-recipients-title {
+        font-weight: bold;
+        font-size: 16px;
+        color: #000000de;
+        letter-spacing: 0.32;
+        margin-top: 13px;
+        text-align: center;
+    }
+    .dialog-select-recipients-subtitle {
+        color: #00000099;
+        font-size: 14px;
+        letter-spacing: 0.31;
+        margin-top: 47px;
+        text-align: left;
+        margin-bottom: 14px;
+    }
+    .dialog-select-recipients-btns {
+        .dialog-select-recipients-send-btn {
+            margin-left: 20px;
+            .btn-with-spinner {
+                background-color: #0563631f;
+            }
+        }
+        .dialog-select-recipients-send-btn.disabled {
+            .btn-with-spinner {
+                background-color: #eff0f1;
+                border: 1px solid #eff0f1;
+                color: #0000004d;
+            }
+        }
+        .dialog-select-recipients-cancel-btn {
+            width: 100px;
+            height: 34px;
+            border: #e1e2e3 solid 1px;
+            background-color: #eff0f1;
+        }
+    }
+    .dialog-select-recipients-btns > * {
+        float: right;
+    }
+}

@@ -1,0 +1,24 @@
+@import "src/alldoc.variables.scss";
+.ap-breadcrumbs {
+    height: 63px;
+    width: 100%;
+    margin-left: 24px;
+    a {
+        text-decoration: none;
+        color: $primary-color;
+        font: 16px Arial;
+        letter-spacing: 0.53px;
+        margin: 0px 8px;
+        cursor: pointer
+    }
+    a[disabled] {
+        cursor: default;
+        color: #000000b2;
+    }
+    a.only-one{
+        text-transform: uppercase;
+        font: normal normal normal 16px/24px Arial;
+        letter-spacing: 0.32px;
+        color: #000000DE;
+    }
+}

@@ -1,0 +1,15 @@
+<div class="bottom-bar">
+  <a class="bottom-bar-link" *ngFor="let link of links, let i = index" [routerLink]="link.url"
+    id="adms-footer-buttonlink-{{link.key}}" (click)="goToUrl(link.url)"
+    [ngClass]="isActiveLink(link.url) ? 'underline' : ''">{{link.name | translate}}</a>
+  <div class="bottom-bar-link">
+    <span class="ap-icon lang "></span>
+    <div class="lang-selector">
+      <mat-select [(value)]="ts.language" class="flags" [ngClass]="ts.language.icon">
+        <mat-option *ngFor="let lang of ts.languages" [value]="lang" dynamicId="dd-bottom-bar-lang">
+          <span class="flags" [ngClass]="lang.icon">{{lang.text| translate}}</span>
+        </mat-option>
+      </mat-select>
+    </div>
+  </div>
+</div>

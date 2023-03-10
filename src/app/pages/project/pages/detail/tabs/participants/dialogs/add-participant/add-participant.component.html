@@ -1,0 +1,37 @@
+<ng-container *ngIf="!isLoading">
+  <div class="dialog-add-participant-container">
+    <span class="dialog-add-participant-title" [id]="'adms-app-dialog-add-participant-title'">{{'addParticipant'|translate}}</span>
+    <span class="dialog-add-participant-subtitle" [id]="'adms-app-dialog-add-participant-subtitle'">{{'whoDoYouWantToAdd'|translate}}</span>
+
+    <div class="dialog-add-participant-autocomplete">
+      <ap-autocomplete (getItemsEvent)="setDataForAutocomplete($event)" [items]="autocompleteItems"
+        [inputPlaceholder]="autocomplementeinputText" [projectId]="projectId" (sendChipsList)="getChipsData($event)"
+        [isLoading]="autocomplete_isLoading" [context]="'adms-app-dialog-add-participant'">
+      </ap-autocomplete>
+    </div>
+    <!-- <div class="dialog-add-participant-textarea-container">
+    <mat-form-field appearance="none" style="width: 300px;" class="dialog-add-participant-textarea-formfield">
+      <span class="dialog-add-participant-textarea-formfield-title">Send a message (optional)</span>
+      <textarea matInput rows="5" cols="10" name="messageText"
+        class="dialog-add-participant-textarea"></textarea>
+    </mat-form-field>
+  </div> -->
+    <div class="dialog-add-participant-select-btn">
+      <mat-form-field appearance="outline" class="select-role">
+        <mat-label>{{'selectProjectRole' |translate}}</mat-label>
+        <mat-select>
+          <mat-option class="matOptionBtnSelect" *ngFor="let item of dropDownItems" [value]="item.tAssignedRole"
+            (click)="selectRole(item)">{{item.tAssignedRole | translate}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="dialog-add-participant-btns">
+      <button mat-stroked-button (click)="cancel()" class="btn-cancel">{{'button_cancel'|translate}}</button>
+      <ap-shared-spinner-button [buttonLabel]="'button_add'" [isLoading]="addBtn_isLoading" [diameter]="20"
+        [mode]="'indeterminate'" [idBtn]="'adms-app-AddParticipant-add-btn'" (buttonAction)="addParticipant($event)"
+        class="addParticipantBtn" [disabled]="addParticipantDisabled()">
+      </ap-shared-spinner-button>
+    </div>
+  </div>
+</ng-container>

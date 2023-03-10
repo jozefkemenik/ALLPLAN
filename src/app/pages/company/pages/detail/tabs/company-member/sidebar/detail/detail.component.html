@@ -1,0 +1,14 @@
+<div class="mx-3">
+<ap-dynamic-control-main  *ngIf="!loading" (change)="onChange($event)" [data]="data" [options]="options"></ap-dynamic-control-main>
+</div>
+
+
+
+<div class="d-flex flex-row mx-3 mt-3 align-items-start" >
+    <a class="show-more-link" *ngIf="!loading" (click)="showMore()">{{'showDetail'|translate}}</a>
+</div>
+  
+<div class="h-100 d-flex flex-row justify-content-center align-items-center"  *ngIf="loading">
+    <mat-spinner></mat-spinner>
+</div>
+

@@ -1,0 +1,38 @@
+<ap-breadcrumbs></ap-breadcrumbs>
+<div class="tabs-wrapper mx-4">
+  <mat-tab-group [(selectedIndex)]="selectedTabIndex" (selectedTabChange)="onTabChanged($event)">
+    <mat-tab [label]="'project_member_tab1' | translate">
+      <div class="company-member">
+        <ap-company-detail-company-member *ngIf="selectedTabIndex===0" [companyId]="companyId"
+          [iconDisabled]="iconIsDisabled()" [disabled]="companyMemberDisabled" (getSelectionOutput)="getSelectionOutputData($event)"></ap-company-detail-company-member>
+      </div>
+    </mat-tab>
+    <mat-tab [label]="'project_member_tab2'|translate" class="company-info">
+      <ap-company-detail-company-info *ngIf="selectedTabIndex===1" [companyId]="companyId"
+        [disabled]="companyInfoDisabled"></ap-company-detail-company-info>
+    </mat-tab>
+  </mat-tab-group>
+  <div class="right-action-panel">
+    <ng-container *ngIf="selectedTabIndex===0">
+      <div class="mat-tab-right-bar-child-simple-dropdown">
+        <ap-dropdown [items]="dropDownItems" (output)="getOutput($event)">
+        </ap-dropdown>
+      </div>
+
+      <div class="mat-tab-right-bar-child-button">
+        <button mat-stroked-button *ngIf="selectedTabIndex==0" (click)="addMemberDialog()"
+          [disabled]="disableAddButton">{{'addMember'|translate}}</button>
+      </div>
+    </ng-container>
+  </div>
+
+  <!-- <div class="mat-tab-right-bar">
+    <ng-container *ngIf="selectedTabIndex===0">
+      <div class="mat-tab-right-bar-child-simple-dropdown">
+        <ap-dropdown [items]="dropDownItems" (output)="getOutput($event)">
+        </ap-dropdown>
+      </div>
+    </ng-container>
+  </div> -->
+
+</div>

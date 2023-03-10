@@ -1,0 +1,27 @@
+<div class=" my-2" *ngIf="data">
+  <div *ngFor="let item of options;" class="dyn-c-row" [ngSwitch]="item.type">
+    <div *ngIf="!item.titleInline" class="label" [id]="item.id+'label'">{{item.label|translate}}</div>
+    <div class="dyn-control" *ngSwitchCase="'longText'">
+      <ap-long-text [model]="data[item.key]" [option]="item" [id]="item.id+'value'">
+      </ap-long-text>
+    </div>
+    <div class="dyn-control" *ngSwitchCase="'text'">
+      <ap-text [model]="data[item.key]" [option]="item" [id]="item.id+'value'"></ap-text>
+    </div>
+    <div class="dyn-control" *ngSwitchCase="'dateTime'">
+      <ap-datetime [model]="data[item.key]" [option]="item" [id]="item.id+'value'">
+      </ap-datetime>
+    </div>
+    <div class="dyn-control" *ngSwitchCase="'date'">
+      <ap-date [model]="data[item.key]" [option]="item" [id]="item.id+'value'"></ap-date>
+    </div>
+    <div class="dyn-control" *ngSwitchCase="'time'">
+      <ap-time [model]="data[item.key]" [option]="item" [id]="item.id+'value'"></ap-time>
+    </div>
+    <div class="dyn-control" *ngSwitchCase="'dropDown'">
+      <ap-dc-dropdown (modelChange)="onChange($event)" [model]="data[item.key]" [option]="item" [id]="item.id+'value'">
+      </ap-dc-dropdown>
+    </div>
+  </div>
+</div>
+

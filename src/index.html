@@ -1,0 +1,90 @@
+<!doctype html>
+<html translate="no">
+
+<head>
+    <base href="/">
+    <meta charset="utf-8">
+    <title>AllDoc - A service by Allplan</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google" content="notranslate" />
+
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <style>
+        @keyframes spinner-grow {
+            0% {
+                transform: scale(0);
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .global-spinner-grow-container {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .global-spinner-grow {
+            display: inline-block;
+            width: 7rem;
+            height: 7rem;
+            vertical-align: text-bottom;
+            background-color: currentColor;
+            border-radius: 50%;
+            opacity: 0;
+            animation: spinner-grow .75s linear infinite;
+        }
+    </style>
+</head>
+
+<body class="notranslate">
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        window.originalPushFunction = window.dataLayer.push;
+        window.dataLayer.push = function () {
+            for (var b = arguments, a = 0; a < b.length; a++)
+                !window.google_tag_manager &&
+                    b[a] &&
+                    b[a].event &&
+                    -1 < b[a].event.indexOf("consent_status")
+                    ? (window.dataLayer.unshift({ uc_status: "loaded" }),
+                        window.dataLayer.unshift(b[a]))
+                    : window.originalPushFunction.call(window.dataLayer, b[a]);
+        };
+    </script>
+
+    <script id="usercentrics-cmp" data-settings-id="-LyTk0t-f"
+        src="https://app.usercentrics.eu/browser-ui/latest/bundle.js" defer>
+        </script>
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            environmentIdentifier: "<env>",
+            pageCountry: "<country code>",
+            pageLanguage: "<language code>",
+            pageChannel: "<channel>",
+        });
+    </script>
+
+    <script type="text/plain" data-usercentrics="Google Tag Manager">
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});
+      var f=d.getElementsByTagName(s)[0],   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;
+      j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+      f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-T3BHQ4');</script>
+
+    <app-root>
+        <div class="global-spinner-grow-container">
+            <div class="global-spinner-grow"></div>
+        </div>
+    </app-root>
+</body>
+
+</html>

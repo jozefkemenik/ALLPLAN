@@ -1,0 +1,168 @@
+@import "src/alldoc.variables.scss";
+@import "src/alldoc.theme.scss";
+
+$top-link-border: 0.13rem solid $contrast-color;
+
+ap-top-bar {
+    .fill-remaining-space {
+        /* This fills the remaining space, by using flexbox. 
+       Every toolbar row uses a flexbox row layout. */
+        flex: 1 1 auto;
+    }
+
+    .top-bar-content-wrapper {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        padding-right: $main-page-side-spacing;
+        padding-left: $main-page-side-spacing;
+        margin-left: $main-page-content-margin;
+        margin-right: $main-page-content-margin;
+        padding: 0px;
+    }
+
+    .top-bar-content-wrapper > * {
+        display: flex;
+        align-items: center;
+    }
+
+    .top-bar {
+        align-items: flex-start;
+        color: $top-bar-text-color;
+        padding: 0;
+        //background: transparent linear-gradient(109deg, var(--gray) 0%, #f9fafb 100%) 0% 0% no-repeat padding-box; //new
+        //background: transparent linear-gradient(109deg, #eff0f1 0%, #f9fafb 100%) 0% 0% no-repeat padding-box; //new
+        background-color: #eff0f1;
+        height: 60px;
+        box-shadow: inset 0px -1px 0px 0px #e1e2e3;
+    }
+
+    .top-bar-username {
+        padding: 0;
+        margin-left: 0.2rem;
+        padding-left: 0.5rem;
+        font: normal normal 14px Arial;
+        letter-spacing: 0.31px;
+        color: #000000de;
+    }
+
+    .button-link {
+        font: normal normal normal 16px Arial;
+        height: 48px;
+        margin: 8px 0px 1px 0px;
+        font-size: 16px;
+        letter-spacing: 0.53px;
+        color: #000000b3;
+        opacity: 0.6;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0px;
+        border-top: 0px;
+        border-left: 0px;
+        border-right: 0px;
+        letter-spacing: 0.53px;
+    }
+
+    //active mode
+    .button-link-selected {
+        //@extend .mat-button;
+        height: 48px;
+        margin: 8px 0px 1px 0px;
+        letter-spacing: 0.53px;
+        //box-shadow: 0 4px 2px -2px $primary-color;
+        color: #000000de;
+        font-size: 16px;
+        opacity: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .button-link:hover {
+        background-color: #0563630d;
+    }
+
+    //focus for mouse click
+    .button-link:focus {
+        //background-color: #0563631f;
+    }
+
+    //focus for keyboard keys
+    .button-link:focus-visible {
+        outline: none;
+        background-color: #0563631f;
+    }
+
+    .button-links {
+        background-color: #eff0f1ff;
+        border: none;
+    }
+
+    .help-link {
+        margin-right: 20px;
+        width: 24px;
+        height: 24px;
+        background: var(--primary) 0% 0% no-repeat padding-box;
+        color: $primary-color 0% 0% no-repeat padding-box;
+        opacity: 1;
+        // display: flex;
+        // align-items: center;
+    }
+
+    .help-image {
+        vertical-align: middle;
+        margin-bottom: 1px;
+        width: 24px;
+        height: 24px;
+        background: var(--primary) 0% 0% no-repeat padding-box;
+        color: $primary-color 0% 0% no-repeat padding-box;
+        opacity: 1;
+    }
+
+    .profile-image {
+        display: inline-flex;
+        border-radius: 100%;
+        border-style: solid;
+        border-width: 0px;
+        border-color: gray;
+        width: 24px;
+        height: 24px;
+        justify-content: center;
+        align-items: center;
+        vertical-align: middle;
+    }
+
+    .top-bar > * {
+        color: #000000de;
+        font-family: Arial;
+        font-size: 16px;
+    }
+
+    //do not change if we still want links to be centralized, flex-grow need to be applied in every link to work.
+    .div-links-centered {
+        min-width: 360px;
+    }
+
+    .link0,
+    .link1,
+    .link2 {
+        padding: 0px 30px 0px 30px;
+    }
+    .logOutBtn {
+        background-color: #fe5000;
+        color: #ffffff;
+        font-family: Arial;
+        font-weight: bold;
+        &:hover {
+            background-color: #d04200;
+            color: #ffffff;
+            font-family: Arial;
+            font-weight: bold;
+        }
+    }
+    .logOutBtnContainer {
+        margin-left: 7px;
+    }
+}

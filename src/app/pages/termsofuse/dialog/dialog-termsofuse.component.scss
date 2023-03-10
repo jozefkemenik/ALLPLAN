@@ -1,0 +1,20 @@
+.dialog-termsofuse {
+    width: 380px;
+    .mat-mdc-dialog-container {
+        .title {
+            display: block;
+            font: normal normal normal 16px/20px Arial;
+            letter-spacing: 0.32px;
+            color: #BF0023DE;
+            opacity: 1;
+            text-align: center;
+        }
+    }
+    .text {
+        display: block;
+        text-align: center;
+        font: normal normal normal 14px/20px Arial;
+        letter-spacing: 0.28px;
+        color: #000000DE;
+    }
+}

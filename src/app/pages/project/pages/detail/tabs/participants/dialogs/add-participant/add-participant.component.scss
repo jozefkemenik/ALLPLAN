@@ -1,0 +1,110 @@
+@import "src/alldoc.variables.scss";
+ap-participants-dialogs-add-participant {
+    * {
+        font-family: Arial;
+    }
+    .dialog-add-participant-container {
+        .dialog-add-participant-title,
+        .dialog-add-participant-subtitle {
+            font-family: Arial;
+            text-align: center;
+            display: block;
+            letter-spacing: 0.32px;
+        }
+        .dialog-add-participant-title {
+            color: #000000de;
+            font-size: 16px;
+            margin-bottom: 47px;
+            font-weight: bold;
+            letter-spacing: 0.32;
+        }
+        .dialog-add-participant-subtitle {
+            color: #00000099;
+            font-size: 14px;
+            text-align: left;
+        }
+        .dialog-add-participant-textarea-formfield {
+            textarea {
+                resize: none;
+                border: #000000de solid 1px;
+                width: 300px;
+                height: 125px;
+                margin-top: 11px;
+            }
+            .dialog-add-participant-textarea-formfield-title {
+                font-size: 14px;
+                color: #00000099;
+            }
+        }
+        .dialog-add-participant-select-btn {
+            margin-top: 20px;
+            .select-role {
+                //display: block;
+                //width: 180px;
+                margin: 0 0 0 auto;
+                font-size: 12px;
+                text-align: left;
+                float: right;
+                .matOptionBtnSelect {
+                    font-family: Arial;
+                    //background-color: rgb(225, 182, 182) !important;
+                }
+            }
+        }
+        .dialog-add-participant-btns {
+            display: flex;
+            float: right;
+            .btn-cancel {
+                margin: 0px 20px 0px auto;
+                display: block;
+            }
+            .btn-add {
+                margin: 0 0 0 20px;
+                display: block;
+            }
+            .btn-add,
+            .btn-cancel {
+                width: 100px;
+                height: 34px;
+            }
+        }
+    }
+    .mat-mdc-option.mat-mdc-selected {
+        background-color: #e0f1f3 !important;
+        color: white !important;
+    }
+    /*TODO(mdc-migration): The following rule targets internal classes of option that may no longer apply for the MDC version.*/
+    .mat-primary .mat-mdc-option.mat-selected:not(.mat-option-disabled) {
+        background-color: #e0f1f3 !important;
+        color: white !important;
+    }
+    .matOptionBtnSelect {
+        background-color: rgb(179, 136, 136);
+    }
+    .dialog-add-participant-select-btn {
+        /*TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version.*/
+        .mat-form-field-outline {
+            background: #eff0f1;
+            border: 1px solid #e1e2e3;
+            border-radius: 2px;
+        }
+        /*TODO(mdc-migration): The following rule targets internal classes of select that may no longer apply for the MDC version.*/
+        .mat-select-value-text {
+            color: $primary-color;
+        }
+        /*TODO(mdc-migration): The following rule targets internal classes of select that may no longer apply for the MDC version.*/
+        .mat-select-arrow {
+            color: $primary-color;
+        }
+    }
+    .addParticipantBtn {
+        .mat-mdc-outlined-button {
+            background-color: #05636326;
+        }
+    }
+    /*TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version.*/
+    .mat-form-field-infix {
+        font-family: Arial;
+    }
+
+}

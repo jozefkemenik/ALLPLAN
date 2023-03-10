@@ -1,0 +1,35 @@
+.translation-dialog{ 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 500px;
+
+    .mat-mdc-dialog-content{
+      padding:0 24px 0 24px;
+    }
+
+    .logs-table{
+      width:100%;
+      .mat-mdc-form-field {
+        font-size: 14px;
+        width: 100%;
+      }
+      td{
+        width:auto;
+      }
+      td.mat-column-on {
+        width: 160px
+      }
+      td.mat-column-takes {
+        width: 90px
+      }
+      td.mat-column-status {
+        width: 80px
+      }
+      
+    }
+  .button {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

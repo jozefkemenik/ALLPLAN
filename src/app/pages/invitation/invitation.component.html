@@ -1,0 +1,54 @@
+<div class="scrollabled " [class.hidden]="loading">
+    <div class="center">
+        <form  [formGroup]="form" (ngSubmit)="submit()" [class.submitted]="submitted">
+            <ng-container *ngFor="let item of options;">
+                <mat-form-field *ngIf="item.type=='text'" dynamicId appearance="outline" class="w-100 mt-2">
+                    <mat-label>{{item.label|translate}}</mat-label>
+                    <input matInput [formControlName]="item.id" [readonly]="item.disabled">
+
+                </mat-form-field>
+                <mat-form-field *ngIf="item.type=='password'" dynamicId appearance="outline" class="w-100 mt-2">
+                    <mat-label>{{item.label|translate}}</mat-label>
+                    <input matInput [type]="item.show?'text':'password'" [formControlName]="item.id" [readonly]="item.disabled">
+                    <button dynamicId mat-icon-button type="button" (click)="item.show = !item.show" class="password-visibility">
+                      <mat-icon [svgIcon]="item.show ? 'custom-hide' : 'custom-show'"></mat-icon>
+                   </button>
+
+                </mat-form-field>
+                <ul class="error-msg my-0"  *ngIf="item.type=='text' && item.id!=='email' && (touchedControl(item.id) || submitted) && invalidControl(item.id)">
+                    <li>{{'error2Characters'|translate}}</li>
+                </ul>
+                <ul class="error-msg my-0"  *ngIf="item.id=='email' && (touchedControl(item.id) || submitted) && invalidControl(item.id)">
+                    <li>{{'emailValid'|translate}}</li>
+                </ul>
+            
+                <ul class="error-msg my-0" *ngIf="item.id=='password' && (touchedControl(item.id) || submitted) && invalidControl(item.id)">
+                    <li *ngFor="let err of passwordErrors">
+                        {{err|translate}}
+                    </li>
+                </ul>
+                <ul class="error-msg my-0" *ngIf="item.id=='repeatPassword' && (touchedControl(item.id) || submitted) && invalidControl(item.id)">
+                    <li *ngFor="let err of passwordRepeatErrors">
+                        {{err|translate}}
+                    </li>
+                </ul>
+
+                <div *ngIf="item.type=='checkBox'" class="d-flex flex-row justify-content-start align-items-center mt-4">
+                    <mat-checkbox [formControlName]="item.id"></mat-checkbox>
+                    <div class="terms-link" #linkterm [innerHtml]="item.label|translate"></div>
+                </div>
+                <ul class="error-msg my-0"  *ngIf="item.type=='checkBox' && (touchedControl(item.id) || submitted) && invalidControl(item.id)">
+                    <li>{{'plsAcceptTermsOfUse'|translate}}</li>
+                </ul>
+              
+            </ng-container>
+            <div class="my-4">
+                <button class="w-100" dynamicId mat-stroked-button type="submit" cdkFocusInitial [disabled]="loading"
+                    mat-button>{{'createAccount'|translate}}</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="h-100 d-flex flex-row justify-content-center align-items-center" *ngIf="loading">
+    <mat-spinner></mat-spinner>
+</div>

@@ -1,0 +1,14 @@
+<ng-container *ngIf="items && items !== undefined">
+  <button class="btn-mat-icon" mat-button [matMenuTriggerFor]="menu">
+    <mat-icon class="svg-mat-icon" svgIcon="google_more_horiz"></mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <ng-container *ngFor="let item of items">
+      <button class="btn-mat-icon-2" [class]="item.icon?.length > 0 ? '' : 'text-center'" mat-menu-item (click)="click($event, item.value)" [disabled]="item.disabled" dynamicId>
+        <mat-icon class="matMenu-svg-mat-icon" *ngIf="item.icon?.length > 0"
+          [class]="item.value?.length > 0 ? item.value : ''" [svgIcon]="item.icon"></mat-icon>
+        <span>{{item.value | translate}}</span>
+      </button>
+    </ng-container>
+  </mat-menu>
+</ng-container>

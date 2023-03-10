@@ -1,0 +1,10 @@
+<mat-icon *ngIf="options.icon" matPrefix [svgIcon]="options.icon" id="adms-icon-empty-section-icon-{{options.icon}}">
+</mat-icon>
+<img id="adms-icon-empty-section-img-{{options.img}}" *ngIf="options.img" class="ap-empty-section--image"
+  src="{{options.img}}">
+<span class="ap-empty-section-text--one">{{options.textOne | translate }}</span>
+<span class="ap-empty-section-text--two">{{options.textTwo | translate}}</span>
+<a *ngIf="options.learnMore && !options.url" [routerLink]="'/help'" class="ap-empty-section--link" title={{options.learnMore}} target="_blank"
+  >{{options.learnMore | translate}}</a>
+  <a *ngIf="options.learnMore && options.url"  class="ap-empty-section--link" title={{options.learnMore}} target="_blank"
+  href={{options.url}}>{{options.learnMore | translate}}</a>

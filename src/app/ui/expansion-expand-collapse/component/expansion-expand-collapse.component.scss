@@ -1,0 +1,146 @@
+@import "src/alldoc.variables.scss";
+@import "src/alldoc.theme.scss";
+
+.expansion-panel-header {
+    padding-left: 20px;
+}
+
+//todo try to remove important! and solve how to use something else instead
+.expansion-panel-header:hover {
+    background: #f5f6f7 0% 0% no-repeat padding-box !important;
+    box-shadow: 0px 1px 2px #0000004d !important;
+    border: 1px solid #bebfc0 !important;
+    border-radius: 1px !important;
+    opacity: 1 !important;
+}
+.mat-expansion-panel-header:active {
+    background: #eff0f1 0% 0% no-repeat padding-box !important;
+    box-shadow: 0px 1px 2px #0000004d !important;
+    border: 1px solid #777778 !important;
+    border-radius: 1px !important;
+    opacity: 1 !important;
+}
+
+.expasion-body-element-span {
+    color: var(--unnamed-color-000000);
+    text-align: left;
+    font: normal normal normal 14px Arial;
+    letter-spacing: 0.31px;
+    color: #000000de;
+    opacity: 1;
+    cursor: pointer;
+}
+.expasion-body-element-span-disabled{
+    color: var(--unnamed-color-000000);
+    text-align: left;
+    font: normal normal normal 14px Arial;
+    letter-spacing: 0.31px;
+    color: #0000004C;
+    opacity: 1;
+}
+
+.mat-expansion-panel-header-title {
+    text-align: left;
+    font: normal normal bold 14px Arial;
+    letter-spacing: 0.1px;
+    color: #000000;
+    opacity: 0.87;
+}
+.expasion-body-element {
+    display: flex;
+    padding: 14px 0 14px 56px;
+    background: #ffffff 0% 0% no-repeat padding-box;
+    box-shadow: 0px 1px 2px #00000029;
+    border: 1px solid #f9fafb;
+}
+.expasion-body-element:hover {
+    background-color: #f5f6f7;
+    opacity: 1;
+}
+.expasion-body-element:active {
+    background-color: #eff0f1;
+    opacity: 1;
+}
+.mat-expansion-panel-body {
+    padding: 0 !important;
+}
+//expansion-panel-header ....arrow angle rotation,
+// .mat-expansion-indicator::after {
+//     transform: rotate(225deg) !important;
+// }
+
+//vertical scrollbar inside expander
+.example-viewport {
+    height: 500px;
+}
+
+@media (min-height: 850px) {
+    .example-viewport {
+        height: 500px;
+    }
+}
+@media (min-height: 1080px) {
+    .example-viewport {
+        height: 800px;
+    }
+}
+
+.expansion-loading {
+    @extend .spinner-loading;
+}
+
+
+.mat-icon-expansionPanel-body {
+    @extend .svg-mat-icon;
+    padding: 0px;
+    width: auto;
+    height: auto;
+    opacity: 0.7;
+}
+.mat-icon-expansionPanel-header {
+    @extend .svg-mat-icon;
+    padding: 0px;
+    width: auto;
+    height: auto;
+    opacity: 0.7;
+}
+
+.mat-icon-expansionPanel-header:hover,
+.mat-icon-expansionPanel-header:active,
+.mat-icon-expansionPanel-body:hover,
+.mat-icon-expansionPanel-body:active {
+    @extend .svg-mat-icon;
+    opacity: 0.87;
+}
+.button-expansionPanel-header[disabled] {
+    opacity: 0.3;
+    color: black;
+}
+.button-expansionPanel-body[disabled] {
+    opacity: 0.3;
+    color: black;
+}
+.body_item_marked {
+    border: 1px solid $primary-color;
+    border-radius: 1px;
+    opacity: 1;
+}
+.body_item_unmarked {
+    border: 1px solid #f9fafb;
+    border-radius: 1px;
+    opacity: 1;
+}
+.expansion-panel-header.mat-expansion-toggle-indicator-before .mat-expansion-indicator {
+    display: flex;
+    margin: 0 24px 4px 0 !important;
+}
+
+// .generall-dialog.mat-dialog-container{
+//     border: 8px solid #E1E2E3;
+//     border-radius: 1px;
+// }
+.mat-mdc-dialog-container {
+    border: 1px solid #e1e2e3;
+    border-radius: 1px;
+}
+

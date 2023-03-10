@@ -1,0 +1,63 @@
+<div class="ap-dialogs-logs">
+<h2 mat-dialog-title>Http Logs</h2>
+<mat-dialog-content class="mat-typography">
+<div *ngIf="!data ||  data.data.length==0" class="d-flex flex-column align-items-center">
+  <h2>no data</h2>
+  </div>
+
+  <table *ngIf="data && data.data.length" mat-table [dataSource]="data" 
+  class="mat-elevation-z8 logs-table"
+  matSort (matSortChange)="announceSortChange($event)"
+  
+  >
+
+<!-- Status Column -->
+<ng-container matColumnDef="status">
+  <th [ngClass]="'sort-icon-asc'"    mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by status">
+    Status
+  </th>
+  <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+</ng-container>
+
+<!-- On Column -->
+<ng-container matColumnDef="on" >
+  <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by on" >
+    On
+  </th>
+  <td mat-cell *matCellDef="let element"> {{element.on}} </td>
+</ng-container>
+
+<!-- Takes Column -->
+<ng-container matColumnDef="takes">
+  <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by takes">
+    Takes [ms]
+  </th>
+  <td mat-cell *matCellDef="let element"> {{element.takes}} </td>
+</ng-container>
+
+<!-- Api Column -->
+<ng-container matColumnDef="api">
+  <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by api">
+    API request
+  </th>
+  <td mat-cell *matCellDef="let element"> {{element.api}} </td>
+</ng-container>
+
+
+
+
+<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr> 
+<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+
+
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <!-- <button mat-button mat-dialog-close>Logout</button> -->
+  <button mat-button  (click)="export()">Export</button>
+  <button mat-button   (click)="clear()">Clear</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>OK</button>
+</mat-dialog-actions>
+</div>

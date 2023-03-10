@@ -1,0 +1,11 @@
+@import "src/alldoc.variables.scss";
+
+.btn-more {
+    display: block;
+    color: $primary-color;
+    cursor: pointer;
+    text-align: right;
+}
+.btn-more-hidden{
+    display: none;
+}

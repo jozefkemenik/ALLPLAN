@@ -1,0 +1,7 @@
+<div class="ap-root">
+<ap-top-bar *ngIf="showTopMenu" [showPartialTopMenu]="showPartialTopMenu" class="main-page-top-bar"></ap-top-bar>
+<div class="main-content">
+    <router-outlet #routerOutlet="outlet"></router-outlet>
+</div>
+<ap-bottom-bar></ap-bottom-bar>
+</div>

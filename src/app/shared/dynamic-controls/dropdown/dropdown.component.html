@@ -1,0 +1,8 @@
+<span  *ngIf="option.readonly" [id]="option.id+'value'">{{model}}</span>
+<mat-form-field class="edit" *ngIf="!option.readonly" appearance="outline" >
+    <mat-select [(value)]="model">
+        <mat-option  *ngFor="let item of option.items" [value]="item.value"
+            (click)="select(item)">{{item.text | translate}}
+        </mat-option>
+    </mat-select>
+</mat-form-field>

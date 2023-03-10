@@ -1,0 +1,42 @@
+<ap-sidebar [(isOpen)]="isOpenSidebar" [sidebarContent]="sidebarContent" [sidebarFooter]="sidebarFooter"
+  [tabs]="sidebarTemplateTabs" [title]="'title'" [(tabIndex)]="tabIndex">
+  <div class="no-overflow">
+    <ap-table [calcHeight]="193" 
+      [config]="tableConfig"
+      [data]="dataTable"
+      [search]="search"
+      (action)="onTableAction($event)"
+      [isOpenSidebar]="isOpenSidebar"
+      ></ap-table> 
+  </div>
+</ap-sidebar>
+
+<ng-template #sidebarContent>
+  //todo
+
+</ng-template>
+<ng-template #sidebarContentTab1>
+  <div class="progress" *ngIf="dataLoading">
+    <mat-spinner></mat-spinner>
+  </div>
+  <ap-prj-doc-page-side-bar-current-index [data]="sidebarData" *ngIf="!dataLoading">
+  </ap-prj-doc-page-side-bar-current-index>
+</ng-template>
+<ng-template #sidebarContentTab2>
+  <div class="progress" *ngIf="dataLoading">
+    <mat-spinner></mat-spinner>
+  </div>
+  <ap-prj-doc-page-side-bar-tracking [data]="sidebarData" *ngIf="!dataLoading"></ap-prj-doc-page-side-bar-tracking>
+</ng-template>
+<ng-template #sidebarContentTab3>
+  <div class="progress" *ngIf="dataLoading">
+    <mat-spinner></mat-spinner>
+  </div>
+  <ap-prj-doc-page-side-bar-general [data]="sidebarData" *ngIf="!dataLoading"></ap-prj-doc-page-side-bar-general>
+</ng-template>
+<ng-template #sidebarFooter>
+  <div class="m-2 d-flex flex-row justify-content-end w-100">
+    <button mat-stroked-button (click)="openRevision()" class="mat-focus-indicator mat-stroked-button mat-button-base"
+      id="ProjectDocumentSideBarTabVersionsBtn">{{'Versions'|translate}}</button>
+  </div>
+</ng-template>

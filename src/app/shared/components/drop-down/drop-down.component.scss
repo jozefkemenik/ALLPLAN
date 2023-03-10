@@ -1,0 +1,35 @@
+@import "src/alldoc.variables.scss";
+
+ap-dropdown {
+    .btn-mat-icon {
+        width: 24px;
+        height: 24px;
+        padding: 0px;
+        min-width: fit-content;
+        background-color: $primary-color;
+        border-radius: 0px;
+        margin-left: 10px;
+        z-index: 100;
+    }
+    .svg-mat-icon {
+        width: 24px;
+        height: 24px;
+
+        svg {
+            fill: white;
+        }
+    }
+}
+.btn-mat-icon2 {
+    display: inline-flex;
+    align-items: center;
+}
+.matMenu-svg-mat-icon {
+    width: 18px;
+    &.hidden{
+        display: none;
+    }
+    &.text-center{
+        text-align: center;
+    }
+}

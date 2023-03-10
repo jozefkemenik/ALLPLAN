@@ -1,0 +1,10 @@
+<div *ngIf="bs.canShow" class="ap-breadcrumbs d-flex flex-row  align-items-center justify-content-start">
+    <ng-container *ngFor="let item of bs.items;let i = index; let first = first ;let last = last;">
+        <a dynamicId *ngIf="item.name!=='...'" [routerLink]="last?null:item.url" [class.only-one]="bs.items.length==1" [attr.disabled]="last?'':null" >{{item.toTranslate? (item.name|translate|ellipsis:30): (item.name | ellipsis:30)}}</a>
+        <mat-progress-spinner class="mx-3" *ngIf="item.name=='...'" diameter="18" strokeWidth="3" mode="indeterminate"></mat-progress-spinner>
+        <mat-icon *ngIf="!last" svgIcon="custom-chevron" 
+            style="transform: rotate(90deg); height: 7.4px; width: 10px; display: flex; align-items: center;">
+        </mat-icon>
+       
+    </ng-container>
+</div>

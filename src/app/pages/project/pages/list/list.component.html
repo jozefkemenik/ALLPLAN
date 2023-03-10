@@ -1,0 +1,11 @@
+<ap-breadcrumbs></ap-breadcrumbs>
+<div class="mx-4">
+    <div class="project-detail-container" [calcHeight]="68">
+        <expansion-expand-collapse   (executeExpansionPanelActionEvent)="executeExpansionPanelAction($event)"
+            (executeIconActionEvent)="executeIconAction($event)"
+            [executeOpenExpansionPanel]="executeOpenExpansionPanelAction"
+            (executeExpansionPanelBodyClickActionEvent)="executeExpansionPanelBodyClickAction($event)"
+            (executeToggleEvent)="executeToggleEvent($event)">
+        </expansion-expand-collapse>
+    </div>
+</div>

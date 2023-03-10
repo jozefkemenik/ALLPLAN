@@ -1,0 +1,42 @@
+<div class="alert-container {{positionClass}}">
+  <div class="alert-wrapper">
+    <div *ngFor="let alert of alerts; let i = index" [@anim]="alert.isVisible ? windowPosition : null">
+      <div class="{{cssClass(alert)}}" *ngIf="alert.isVisible">
+        <div *ngIf="alert.title" class="alert-title">{{alert.title}}</div>
+        <div class="alert-content-container" [ngClass]="iconClass6(alert.type)">
+          <div class="alert-icon-container" [ngClass]="iconClass5(alert.type)">
+            <div *ngIf="iconTemplate != null; else contentIconTemplate">
+              <ng-container [ngTemplateOutlet]="iconTemplate" [ngTemplateOutletContext]="{data:alert}">
+              </ng-container>
+            </div>
+            <ng-template #contentIconTemplate>
+              <!-- <div class="{{iconClass(alert.type)}}"></div> -->
+              <mat-icon [svgIcon]="iconClass2(alert.type)" style="width: 18px; vertical-align: middle; padding: 0px;"
+                [ngClass]="iconClass(alert.type)">
+              </mat-icon>
+            </ng-template>
+          </div>
+          <div class="alert-content"
+            [ngClass]="(alert.subMessage!== null && alert.subMessage.length!==0) ? 'alert-content-message' : 'alert-content-no-message'">
+            <div *ngIf="contentTemplate != null; else contentTextTemplate">
+              <ng-container [ngTemplateOutlet]="contentTemplate" [ngTemplateOutletContext]="{data:alert}">
+              </ng-container>
+            </div>
+            <ng-template #contentTextTemplate>
+              <div class="content-text-container" [ngClass]="iconClass4(alert.type)">
+                {{alert.message}}</div>
+              <div *ngIf="alert.subMessage!== null && alert.subMessage.length!==0"
+                class="content-text-container-subtitle" [ngClass]="iconClass4(alert.type)">{{alert.subMessage}}</div>
+            </ng-template>
+          </div>
+          <div class="alert-close-button">
+            <!-- <a (click)="removeAlert(alert)">&times;</a>   zelena zlta - cierna-->
+            <mat-icon svgIcon="custom-cancel" (click)="removeAlert(alert)" [ngClass]="iconClass3(alert.type)"
+              style="width: 12px; vertical-align: middle; padding: 0px; cursor: pointer; margin: 18px 18px 0px 0px;">
+            </mat-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

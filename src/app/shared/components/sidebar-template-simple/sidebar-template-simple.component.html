@@ -1,0 +1,26 @@
+<div class="ap-sidebar-template-simple my-2">
+  <div *ngFor="let item of options.items;" class="row" [ngSwitch]="item.type">
+    <div class="label" [id]="item.id+'label'">{{item.label|translate}}</div>
+    <div class="dyn-control" *ngSwitchCase="controlType.longText">
+      <ap-long-text [model]="data[item.key]" [option]="item" [id]="item.id+'value'">
+      </ap-long-text>
+    </div>
+    <div class="dyn-control" *ngSwitchCase="controlType.text">
+      <ap-text [model]="data[item.key]" [option]="item" [id]="item.id+'value'"></ap-text>
+    </div>
+    <div class="dyn-control" *ngSwitchCase="controlType.dateTime">
+      <ap-datetime [model]="data[item.key]" [option]="item" [id]="item.id+'value'">
+      </ap-datetime>
+    </div>
+    <div class="dyn-control" *ngSwitchCase="controlType.date">
+      <ap-date [model]="data[item.key]" [option]="item" [id]="item.id+'value'"></ap-date>
+    </div>
+    <div class="dyn-control" *ngSwitchCase="controlType.time">
+      <ap-time [model]="data[item.key]" [option]="item" [id]="item.id+'value'"></ap-time>
+    </div>
+    <div class="dyn-control" *ngSwitchCase=" controlType.dropDown">
+      <ap-dc-dropdown [model]="data[item.key]" [option]="item" [id]="item.id+'value'">
+      </ap-dc-dropdown>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,62 @@
+<ap-breadcrumbs></ap-breadcrumbs>
+<div class="tabs-wrapper mx-4">
+    <mat-tab-group [(selectedIndex)]="selectedTabIndex" (selectedTabChange)="onTabChanged($event)">
+        <mat-tab [label]="'Versions'|translate">
+            <ng-container>
+                <ap-sidebar [(isOpen)]="isOpenSidebar" [sidebarContent]="sidebarContent" [sidebarFooter]="sidebarFooter"
+                    [tabs]="sidebarTemplateTabs" [title]="'title'" [(tabIndex)]="tabIndex">
+                    <div class="no-overflow">
+                        <!--versions table-->
+                        <ap-table [calcHeight]="175" [config]="tableConfig" [data]="dataTable"
+                            (action)="onTableAction($event)"></ap-table>
+                    </div>
+                </ap-sidebar>
+
+                <ng-template #sidebarContent>
+                    //todo
+
+                </ng-template>
+                <ng-template #sidebarContentTab1>
+                    <div class="progress" *ngIf="loading">
+                        <mat-spinner></mat-spinner>
+                    </div>
+                    <ap-prj-doc-page-side-bar-current-index [data]="sidebarData" *ngIf="!loading">
+                    </ap-prj-doc-page-side-bar-current-index>
+                </ng-template>
+                <ng-template #sidebarContentTab2>
+                    <div class="progress" *ngIf="loading">
+                        <mat-spinner></mat-spinner>
+                    </div>
+                    <ap-prj-doc-page-side-bar-tracking [data]="sidebarData"
+                        *ngIf="!loading"></ap-prj-doc-page-side-bar-tracking>
+                </ng-template>
+                <ng-template #sidebarContentTab3>
+                    <div class="progress" *ngIf="loading">
+                        <mat-spinner></mat-spinner>
+                    </div>
+                    <ap-prj-doc-page-side-bar-general [data]="sidebarData"
+                        *ngIf="!loading"></ap-prj-doc-page-side-bar-general>
+                </ng-template>
+                <ng-template #sidebarFooter>
+                    <!-- <div class="m-2 d-flex flex-row justify-content-end w-100">
+                      <button mat-stroked-button (click)="openRevision()" class="mat-focus-indicator mat-stroked-button mat-button-base"
+                        id="ProjectDocumentSideBarTabVersionsBtn">{{'Versions'|translate}}</button>
+                    </div> -->
+                </ng-template>
+            </ng-container>
+
+
+
+        </mat-tab>
+    </mat-tab-group>
+
+    <div class="right-action-panel">
+        <ng-container *ngIf="selectedTabIndex===0">
+            <div class="mat-tab-right-bar-child-simple-dropdown">
+                <ap-dropdown [items]="dropDownItems" (output)="getOutput($event)">
+                </ap-dropdown>
+            </div>
+        </ng-container>
+    </div>
+
+</div>

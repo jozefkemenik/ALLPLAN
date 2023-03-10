@@ -1,0 +1,39 @@
+<mat-form-field class="autcomplete-wrap" appearance="outline">
+  <mat-label>{{inputPlaceholder}}</mat-label>
+  <mat-chip-grid #chipList aria-label="Autocomplete selection" class="matchipList">
+    <mat-chip-row *ngFor="let chipItem of chipsItems; index as i" [removable]="chipRemovable"
+      (removed)="removeChip(chipItem)" class="matchip" [id]="context+'-matChip-'+i">
+      {{chipItem.title|ellipsis:40}}
+      <mat-icon matChipRemove *ngIf="chipRemovable" svgIcon="google_icons_cancel" class="chip-mat-icon-cancel"
+        [id]="context+'-matChip-icon-'+i">
+      </mat-icon>
+    </mat-chip-row>
+    <input type="text" aria-label="Number" matInput [matAutocomplete]="auto" (click)="showSearches = true"
+      #itemsSearchInput [matChipInputFor]="chipList" [(ngModel)]="autocompleteInput" name="autocompleteInput" [id]="context+'-input'">
+  </mat-chip-grid>
+  <mat-autocomplete #auto="matAutocomplete">
+    <!-- (optionSelected)="selected($event)" -->
+    <ng-container *ngIf="items && items.length > 0 && !isLoading">
+      <mat-option *ngFor=" let item of items; index as j" [value]="item.title" class="app-autocomplete-matOption"
+        (click)="getSelectedValue(item)" [id]="context+'-matOption-'+j">
+        <span class="app-autocomplete-matOption-icon-space-1"></span>
+        <span
+          [style]="' background-color: '+item.iconCircleColor.backgroundColor+'; border-color: '+item.iconCircleColor.backgroundColor+'; color: '+item.iconCircleColor.textColor+';'"
+          class="app-autocomplete-matOption-icon" [id]="context+'-matOption-'+j+'-circle'">{{item.iconText}}</span>
+        <div class="app-autocomplete-matOption-icon-space-2"></div>
+        <span class="app-autocomplete-matOption-subtitle" [innerHTML]="item.subtitle | highlight2: lastSearchValue"
+          [id]="context+'-matOption-'+j+'-subtitle'"></span>
+        <br>
+        <span class="app-autocomplete-matOption-title" [id]="context+'-matOption-'+j+'-title'">{{item.title}}</span>
+      </mat-option>
+    </ng-container>
+    <!-- <ng-container>
+      <mat-option *ngIf="isLoading">
+        <mat-progress-bar mode='indeterminate'></mat-progress-bar>
+      </mat-option>
+    </ng-container> -->
+  </mat-autocomplete>
+  <div *ngIf="isLoading" class="autocomplete-div-spinner">
+    <mat-progress-bar mode='indeterminate' class="autocomplete-spinner"></mat-progress-bar>
+  </div>
+</mat-form-field>

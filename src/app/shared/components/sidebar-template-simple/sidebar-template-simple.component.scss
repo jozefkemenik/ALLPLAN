@@ -1,0 +1,30 @@
+@import "src/alldoc.variables.scss";
+
+.ap-sidebar-template-simple .row {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: center;
+    align-items: flex-start;
+}
+.ap-sidebar-template-simple .row:not(:last-child) {
+    padding-bottom: 14px;
+}
+.label {
+    color: $label-text-color;
+    text-align: left;
+    word-wrap: break-word;
+    width: 120px;
+    margin-right: 5px;
+}
+.dyn-control {
+    color: $control-text-color;
+    width: 240px;
+    word-wrap: break-word;
+}
+.label,
+.dyn-control {
+    font-size: 14px;
+    letter-spacing: 0px;
+    text-align: left;
+}

@@ -1,0 +1,19 @@
+@import "src/alldoc.variables.scss";
+
+.ap-root {
+    display: flex;
+    flex-direction: column;
+    flex:1;
+  }
+  
+.main-content {
+    background: $main-page-content-background-color;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: hidden;
+}
+
+
+

@@ -1,0 +1,48 @@
+<div class="ap-sidebar">
+  <mat-sidenav-container [hasBackdrop]="false">
+    <mat-sidenav-content>
+      <div class="mat-elevation-z8">
+        <ng-content></ng-content>
+      </div>
+    </mat-sidenav-content>
+    <mat-sidenav #sidenav>
+      <div class="ap-sidebar-container" *ngIf="!tabs">
+        <div class="ap-sidebar-header">
+          <span class="title">{{title | translate}}</span>
+          <mat-icon (click)="close()" svgIcon="custom-cancel" class="close-icon"></mat-icon>
+        </div>
+        <div class="ap-sidebar-body">
+          <ng-container *ngTemplateOutlet="sidebarContent"></ng-container>
+        </div>
+        <div class="ap-sidebar-footer" *ngIf="sidebarFooter">
+          <ng-container *ngTemplateOutlet="sidebarFooter"></ng-container>
+        </div>
+      </div>
+      <div *ngIf="tabs" class="ap-sidebar-container">
+        <div class="ap-sidebar-header">
+          <nav mat-tab-nav-bar>
+            <ng-container *ngFor="let tab of tabs">
+              <a *ngIf="!tab.disabled" mat-tab-link (click)="tabClick(tab)" [active]="activeTab == tab"
+                [id]="tab.context" [class.active]="activeTab == tab">
+                {{tab.title | translate}} </a>
+              <div *ngIf="tab.disabled" [matTooltip]="tab.translation" matTooltipPosition="below" #tooltip="matTooltip"
+                matTooltipShowDelay="500" matTooltipHideDelay="500" matTooltipClass="custom-tooltip">
+                <a mat-tab-link (click)="tabClick(tab)" [active]="activeTab == tab" [id]="tab.context"
+                  [disabled]="tab.disabled" class="disabled">
+                  {{tab.title | translate}} </a>
+              </div>
+            </ng-container>
+          </nav>
+          <mat-icon (click)="close()" svgIcon="custom-cancel" class="close-icon"></mat-icon>
+        </div>
+        <div class="ap-sidebar-body">
+          <ng-container *ngTemplateOutlet="activeTab&&activeTab.templateRef"></ng-container>
+        </div>
+        <div class="ap-sidebar-footer" *ngIf="sidebarFooter">
+          <ng-container *ngTemplateOutlet="sidebarFooter"></ng-container>
+        </div>
+      </div>
+
+    </mat-sidenav>
+  </mat-sidenav-container>
+</div>

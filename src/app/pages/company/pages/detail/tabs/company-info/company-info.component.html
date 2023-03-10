@@ -1,0 +1,53 @@
+<div *ngIf="disabled">
+  <div class="grandParentContaniner">
+    <div class="parentContainer">
+      <ap-empty-section *ngIf="disabled" [options]="config">
+      </ap-empty-section>
+    </div>
+  </div>
+</div>
+
+<ng-container *ngIf="loading && !disabled">
+  <div class="company-info-loading">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-container>
+
+<mat-grid-list *ngIf="!disabled && !loading" cols="3" rowHeight="400px" class="mat-grid-list-1">
+  <mat-grid-tile colspan="2">
+    <div class="internalMatGrid">
+      <mat-grid-list cols="2" rowHeight="20px" class="mat-grid-list-2">
+        <mat-grid-tile colspan="1" class="left-side-mat-grid-tile">{{'name'| translate}}</mat-grid-tile>
+        <mat-grid-tile colspan="1" class="middle-side-mat-grid-tile">{{data.name}}</mat-grid-tile>
+      </mat-grid-list>
+      <mat-grid-list cols="2" rowHeight="20px" class="mat-grid-list-2">
+        <mat-grid-tile colspan="1" class="left-side-mat-grid-tile">{{'customerNumber'| translate}}
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1" class="middle-side-mat-grid-tile">{{data.customerNumber}}</mat-grid-tile>
+      </mat-grid-list>
+      <mat-grid-list cols="2" rowHeight="20px" class="mat-grid-list-2">
+        <mat-grid-tile colspan="1" class="left-side-mat-grid-tile">{{'expirationDate'| translate}}
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1" class="middle-side-mat-grid-tile">{{data.expirationDate}}</mat-grid-tile>
+      </mat-grid-list>
+      <mat-grid-list cols="2" rowHeight="90px" class="mat-grid-list-2">
+        <mat-grid-tile colspan="1" class="left-side-mat-grid-tile">{{'storage'| translate}}
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1">
+          <ng-container>
+            <ap-progress-bar-animated [data]="progressBarData"></ap-progress-bar-animated>
+          </ng-container>
+        </mat-grid-tile>
+      </mat-grid-list>
+      <mat-grid-list cols="2" rowHeight="20px" class="mat-grid-list-2">
+        <mat-grid-tile colspan="2" class="left-side-mat-grid-tile signature-title">{{'companySignature'| translate}}
+        </mat-grid-tile>
+        <mat-grid-tile colspan="2" class="middle-side-mat-grid-tile signature">
+          <div [innerHTML]="data.signature">
+          </div>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  </mat-grid-tile>
+  <!-- <mat-grid-tile *ngIf="true">Todo picture of company</mat-grid-tile> -->
+</mat-grid-list>

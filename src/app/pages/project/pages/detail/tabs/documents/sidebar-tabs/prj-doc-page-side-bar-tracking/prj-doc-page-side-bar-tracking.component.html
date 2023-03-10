@@ -1,0 +1,7 @@
+<ng-container *ngFor="let items of data.tracking; let first = first; let last = last">
+  <div class="tab-tracking">
+    <ap-sidebar-template-simple [options]="options" [data]="items" *ngIf="data">
+    </ap-sidebar-template-simple>
+  </div>
+  <p class="ap-separator" *ngIf="!last"></p>
+</ng-container>

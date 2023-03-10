@@ -1,0 +1,44 @@
+<div class="dashboard">
+  <div class="div-centered content-header">
+    <span  class="text-main-section" style="margin-right:auto; letter-spacing: 0.32px;">{{'inbox'|translate}}</span>
+
+    <button  mat-stroked-button [disabled]="selectionTableData.length==0"
+      [class]="selectionTableData.length>0? 'mat-button-inbox-actions' : 'mat-button-inbox-actions-disabled'"
+      (click)="multipleDownloads();" style="height: 34px;"
+      dynamicId>{{'downloadAll'|translate}}</button>
+    <button mat-stroked-button disabled class="mat-button-inbox-actions-disabled"
+      style="height: 34px; display: none;" dynamicId>{{'filter'|translate}}</button>
+    <mat-form-field [floatLabel]="'never'"
+      class="dashboard-matFormField-search">
+      <input matInput type="text" (keyup.enter)="doSearch()" class="dashboard-search-input"
+        placeholder="{{'search'|translate}}" 
+        [(ngModel)]="searchValue" maxlength="100" 
+        dynamicId>
+      <!-- <button mat-button matPrefix mat-icon-button> -->
+      <button (click)="doSearch()" matPrefix mat-icon-button style="width: 32px; height: 32px;"
+        class="search-input-buttons" dynamicId>
+        <mat-icon matPrefix svgIcon="custom-search-icon" class="svg-mat-icon-active-1" dynamicId>
+        </mat-icon>
+      </button>
+      <!-- </button> -->
+
+      <!-- <button mat-button matSuffix mat-icon-button> -->
+      <button (click)="closeSearch()" matSuffix mat-icon-button style="width: 32px; height: 32px;"
+        class="search-input-buttons" dynamicId>
+        <mat-icon matSuffix svgIcon="custom-clear-icon" class="svg-mat-icon-active-2" style="width: 10px;" dynamicId>
+        </mat-icon>
+      </button>
+      <!-- </button> -->
+    </mat-form-field>
+
+  </div>
+  <div class="table-content mat-elevation-z8">
+    <ap-table [calcHeight]="123" 
+    [config]="tableConfig"
+    [data]="dataTable"
+    [search]="search"
+    (action)="onTableAction($event)"
+    ></ap-table> 
+  </div>
+ 
+</div>

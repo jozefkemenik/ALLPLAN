@@ -1,0 +1,482 @@
+@import "src/alldoc.variables.scss";
+@import "src/alldoc.theme.scss";
+
+
+ap-table {
+  $sort-icon-size: 8px;
+
+
+  .table-main-wrapper {
+    border: none !important;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    background-color: #ffffff;
+    height: inherit;
+  }
+
+
+
+
+  table.mat-mdc-table th.mat-mdc-header-cell {
+    background: $table-header-color;
+    border-bottom: 1px solid #0000004D;
+    border-right: 1px solid white;
+    text-align: left;
+    font: normal normal bold 14px/24px Arial;
+    letter-spacing: 0.1px;
+    color: #000000DE;
+    opacity: 1;
+  }
+
+  table.mat-mdc-table td.mat-mdc-cell {
+    color: $text-normal-color;
+    text-align: left;
+    font: normal normal normal 14px/24px Arial;
+    letter-spacing: 0px;
+    color: #000000de;
+    opacity: 0.87;
+    padding-left: 0.4rem;
+    border-right: 0.08rem solid $table-header-color;
+    border-bottom: unset;
+  }
+
+
+
+  table.mat-mdc-table tr.mat-mdc-header-row {
+    height: $table-header-height;
+
+  }
+
+  table.mat-mdc-table tr.mat-mdc-row.expand-detail-row {
+    height: 0;
+    .expanded-detail-main {
+      &.visible {
+        .expanded-detail-content {
+          max-height: 1000px;
+        }
+      }
+      .expanded-detail-content {
+      -webkit-transition: max-height 0.50s ease-in;
+      -moz-transition: max-height 0.50s ease-in;
+      -ms-transition: max-height 0.50s ease-in;
+      -o-transition: max-height 0.50s ease-in;
+      transition: max-height 0.50s ease-in;
+      overflow: hidden;
+      // "height: 0" not work with css transitions
+      max-height: 0;
+      .expanded-detail-inner{
+        padding: 0 15px 15px 15px; 
+      }
+      }
+    }
+
+  }
+
+
+
+  table.mat-mdc-table {
+
+    th.selection-column,
+    td.selection-column {
+      min-width: 20px;
+      width: 20px;
+      box-shadow: unset;
+      border-right: unset;
+      padding-left: 12px !important;
+
+    }
+
+
+    th.action-column,
+    td.action-column {
+      max-width: 30px;
+      width: 30px;
+      box-shadow: unset;
+      padding: 0 10px;
+      text-align: center !important;
+
+    }
+
+    tr.link-open {
+      td:first-of-type:before {
+        content: '';
+        position: absolute;
+        background: $primary-color;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+      }
+
+      .text-link {
+        color: $primary-color  !important;
+        font-weight: bold;
+      }
+    }
+
+  }
+
+  table.mat-mdc-table tr.mat-mdc-row {
+    height: $table-row-height;
+
+    &:hover {
+      background-color: #F5F6F7
+    }
+
+    &.selected {
+      background-color: #E0F1F3;
+    }
+
+    &:hover.selected {
+      background-color: #B2DCE0;
+    }
+
+    &.no-active td {
+      color: #0000004D;
+
+      &.text-link {
+        color: $text-normal-color;
+      }
+    }
+  }
+
+  .mat-mdc-table-paginator {
+    display: flex !important;
+    padding-left: $padding;
+    height: $table-paginator-size;
+  }
+  /* TODO(mdc-migration): The following rule targets internal classes of paginator that may no longer apply for the MDC version.*/
+  .mat-mdc-paginator .mat-paginator-outter-container {
+    display: block;
+    margin-right: 20px;
+  }
+
+  .mat-mdc-paginator .mat-mdc-paginator-container {
+    min-height: 0px;
+    height: $table-paginator-size;
+    font-weight: $text-normal-font-weight;
+    color: $text-normal-color;
+  }
+
+
+  // custom paginator
+  /* TODO(mdc-migration): The following rule targets internal classes of paginator that may no longer apply for the MDC version.*/
+  .mat-mdc-paginator-page-size .mat-paginator-page-size-select {
+    width: 2.5rem;
+    font-weight: $text-normal-font-weight;
+    color: $text-normal-color;
+  }
+  /* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version.*/
+  .mat-paginator-page-size-select .mat-form-field-underline {
+    display: none;
+  }
+  /* TODO(mdc-migration): The following rule targets internal classes of button that may no longer apply for the MDC version.*/
+  /* TODO(mdc-migration): The following rule targets internal classes of button that may no longer apply for the MDC version.*/
+  .mat-paginator-navigation-first .mat-button-wrapper .mat-paginator-icon path {
+    d: path("M11.726 8.878l-.88-.88-3.84 3.84 3.84 3.84.88-.88-2.88-2.96zM15.726 8.878l-.88-.88-3.84 3.84 3.84 3.84.88-.88-2.88-2.96z"
+      );
+  }
+  /* TODO(mdc-migration): The following rule targets internal classes of button that may no longer apply for the MDC version.*/
+  /* TODO(mdc-migration): The following rule targets internal classes of button that may no longer apply for the MDC version.*/
+  .mat-paginator-navigation-last .mat-button-wrapper .mat-paginator-icon path {
+    d: path("M11.993 8.785l.88-.88 3.84 3.84-3.84 3.84-.88-.88 2.88-2.96zM7.993 8.785l.88-.88 3.84 3.84-3.84 3.84-.88-.88 2.88-2.96z"
+      );
+  }
+  /* TODO(mdc-migration): The following rule targets internal classes of button that may no longer apply for the MDC version.*/
+  /* TODO(mdc-migration): The following rule targets internal classes of button that may no longer apply for the MDC version.*/
+  .mat-paginator-navigation-previous .mat-button-wrapper .mat-paginator-icon path {
+    d: path("M13.726 8.878l-.88-.88-3.84 3.84 3.84 3.84.88-.88-2.88-2.96z");
+  }
+  /* TODO(mdc-migration): The following rule targets internal classes of button that may no longer apply for the MDC version.*/
+  /* TODO(mdc-migration): The following rule targets internal classes of button that may no longer apply for the MDC version.*/
+  .mat-paginator-navigation-next .mat-button-wrapper .mat-paginator-icon path {
+    d: path("M9.993 8.785l.88-.88 3.84 3.84-3.84 3.84-.88-.88 2.88-2.96z");
+  }
+
+
+
+
+
+
+  /* in global css document: */
+  /* this makes it so that sort header arrow is always shown: */
+
+  /* Hide the default sort arrow display: */
+  //.mat-sort-header-stem,
+  .mat-sort-header-indicator {
+    display: none !important;
+  }
+
+
+
+
+
+  // custom sort headers
+
+  .mat-sort-header-container .mat-sort-header-arrow {
+    margin: 0 4px;
+  }
+
+
+
+
+  .mat-sort-header-container .mat-sort-header-arrow .mat-sort-header-stem {
+    width: $sort-icon-size;
+    height: $sort-icon-size;
+    transform: rotate(-45deg);
+    background: linear-gradient(45deg,
+        $text-normal-color 40%,
+        transparent 40%,
+        transparent 60%,
+        $text-normal-color 60%,
+        $text-normal-color 100%);
+  }
+
+  .sort-icon-asc .mat-sort-header-container .mat-sort-header-arrow .mat-sort-header-stem {
+    width: $sort-icon-size;
+    height: $sort-icon-size;
+    transform: rotate(-45deg);
+    background: linear-gradient(45deg, transparent 60%, $text-normal-color 40%);
+  }
+
+  .sort-icon-desc .mat-sort-header-container .mat-sort-header-arrow .mat-sort-header-stem {
+    width: $sort-icon-size;
+    height: $sort-icon-size;
+    transform: rotate(135deg);
+    background: linear-gradient(45deg, transparent 60%, $text-normal-color 40%);
+  }
+
+  .no-wrap-text-header,
+  .no-wrap-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &.no-wrap-text {
+      max-width: 0px;
+    }
+  }
+
+
+
+
+  ap-table table.mat-mdc-table td.mat-mdc-cell {
+    text-align: left;
+    font: normal normal normal 14px/24px Arial;
+    letter-spacing: 0px;
+    color: rgba(0, 0, 0, 0.8705882353);
+    opacity: 0.87;
+  }
+
+
+  ap-table table.mat-mdc-table td.mat-mdc-cell {
+    color: black;
+    text-align: left;
+    font: normal normal normal 14px/24px Arial;
+    letter-spacing: 0px;
+    color: rgba(0, 0, 0, 0.8705882353);
+    opacity: 0.87;
+  }
+
+  ap-table table.mat-mdc-table td.mat-mdc-cell {
+    padding-left: 0.4rem;
+    border-right: 0.08rem solid #e7e7e7;
+    border-bottom: 0;
+    border-bottom: initial;
+  }
+
+
+
+
+  table th:hover .resize-handle {
+    opacity: 1;
+    transition: 0.3s ease-in-out;
+  }
+
+  .resize-handle {
+    display: inline-block;
+    border-right: 5px solid #eff0f1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    cursor: col-resize;
+    opacity: 0;
+  }
+
+  //new solution 2
+  .mat-mdc-table {
+    width: 100%;
+
+    &.resizing {
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      cursor: col-resize;
+    }
+
+    .mat-mdc-cell {
+      span {
+        display: block;
+        //overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      &.inactive {
+        opacity: 0.4;
+      }
+    }
+
+    .mat-mdc-header-cell {
+      &:not(:last-child) {
+        .resize-holder {
+          cursor: col-resize;
+          width: 20px;
+          height: 100%;
+          position: absolute;
+          right: -10px;
+          top: 0;
+          z-index: 1;
+        }
+      }
+    }
+
+    //   .mat-cell,
+    //   .mat-header-cell {
+
+    //     //border-right: 1px solid rgba(0, 0, 0, 0.12) !important;
+    //     &:not(:nth-child(1)) {
+    //       padding: 0 10px;
+    //     }
+    //   }
+  }
+
+  .mat-icon-column {
+    display: flex;
+    justify-content: center;
+
+    height: inherit;
+    align-items: center;
+    width: auto !important;
+  }
+
+  td.action-column .mat-icon {
+    cursor: pointer;
+
+    &.no-active {
+      cursor: initial;
+      color: #0000004D;
+    }
+  }
+
+  .mat-mdc-paginator-page-size-label,
+  .mat-mdc-paginator-range-label {
+    color: #000000b2;
+  }
+
+  .table-bottom-icons>* {
+    fill: #000000b2;
+  }
+
+
+  thead tr th.mat-mdc-header-cell,
+  thead tr th.mat-header-cell:last-of-type {
+    padding-left: 8px;
+    padding-right: 8px;
+
+
+  }
+
+  table.mat-mdc-table td.mat-mdc-cell {
+
+    text-align: left;
+    font: normal normal normal 14px/24px Arial;
+    letter-spacing: 0px;
+    color: #000000de;
+    //color: rgb(0 0 0 / 87%);
+    opacity: 0.87;
+  }
+
+  table.mat-mdc-table td.mat-mdc-cell .expandable {
+    padding: 0 5px;
+    cursor: pointer;
+
+    &.expanded {
+      transform: rotate(0deg);
+    }
+
+    transform: rotate(180deg);
+
+    width: 12px;
+    display: table-cell;
+  }
+
+
+
+  .mat-sort-header-container .mat-sort-header-arrow .mat-sort-header-stem {
+    transform: rotate(-45deg);
+    background: linear-gradient(45deg,
+        $text-normal-color 40%,
+        transparent 40%,
+        transparent 60%,
+        $text-normal-color 60%,
+        $text-normal-color 100%);
+  }
+
+  .mat-mdc-paginator-page-size {
+    height: 35px;
+    align-items: center !important;
+  }
+
+  .mat-mdc-table-sticky {
+    display: table-cell !important;
+    opacity: 1 !important;
+  }
+
+  .table-icon {
+    background-size: 15px;
+    background-repeat: no-repeat;
+
+    &.custom-employee {
+      background-image: url("/assets/images/Employee.svg");
+      padding-left: 35px;
+    }
+
+    &.custom-guest {
+      background-image: url("/assets/images/Guest.svg");
+      padding-left: 35px;
+    }
+
+    &.custom-administrator {
+      background-image: url("/assets/images/Admin.svg");
+      padding-left: 35px;
+    }
+
+    &.custom-managers {
+      background-image: url("/assets/images/role_assigned.svg"), url("/assets/images/role_assigned.svg"),
+        url("/assets/images/role_assigned.svg");
+      background-repeat: no-repeat, no-repeat, no-repeat;
+      padding-left: 108px;
+      background-position: 0 top, 38px top, 76px top;
+    }
+
+    &.custom-editors {
+      background-image: url("/assets/images/role_assigned.svg"), url("/assets/images/role_assigned.svg"),
+        url("/assets/images/role_denied.svg");
+      background-repeat: no-repeat, no-repeat, no-repeat;
+      padding-left: 108px;
+      background-position: 0 top, 38px top, 76px top;
+    }
+
+    &.custom-viewers {
+      background-image: url("/assets/images/role_assigned.svg"), url("/assets/images/role_denied.svg"),
+        url("/assets/images/role_denied.svg");
+      background-repeat: no-repeat, no-repeat, no-repeat;
+      padding-left: 108px;
+      background-position: 0 top, 38px top, 76px top;
+    }
+  }
+
+
+}

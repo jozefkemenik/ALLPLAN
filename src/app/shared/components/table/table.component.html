@@ -1,0 +1,117 @@
+<div class='mat-elevation-z8 table-main-wrapper'>
+  <!-- [ngTemplateOutletContext]="{gradingKey: 'kokot' }">
+  </ng-container> -->
+
+  <table [matSortActive]="config.sort.key" [matSortDirection]="config.sort.direction" matSort
+    (matSortChange)="sortChange($event)" multiTemplateDataRows mat-table [dataSource]="rows">
+    <!-- Actions Column -->
+    <ng-container [matColumnDef]="ROW_ACTIONS_COLUMN_NAME" stickyEnd>
+      <th mat-header-cell *matHeaderCellDef class="action-column">
+      </th>
+      <!-- menu with icon actions -->
+      <td mat-cell *matCellDef="let row; let i = dataIndex;" (ngInit)="row.noActive = config.isNoActive(row);"
+        class="action-column mat-icon-column">
+        <ng-container *ngFor="let action of row.actions, let j = index ">
+
+          <mat-icon [svgIcon]="action.icon" style="width: 18px;"
+            (click)="!row.noActive && clickAction($event, row,  action)" matTooltip="{{action.tooltip | translate }}"
+            matTooltipClass="custom-tooltip" [class.no-active]="row.noActive || action.disabled" [class]="action.class"
+            matTooltipPosition="below" #tooltip="matTooltip" matTooltipShowDelay="200" matTooltipHideDelay="200"
+            dynamicId>
+          </mat-icon>
+        </ng-container>
+      </td>
+    </ng-container>
+
+    <ng-container [matColumnDef]="ROW_SEL_COLUMN_NAME" [sticky]="true">
+      <th mat-header-cell *matHeaderCellDef class="selection-column">
+        <mat-checkbox *ngIf="config.canSelectRows" (change)="$event ? masterToggle() : null"
+          [checked]="selection.hasValue() && isAllSelected()" [indeterminate]="selection.hasValue() && !isAllSelected()"
+          [disabled]="isLoading || totalCount === 0" dynamicId>
+        </mat-checkbox>
+      </th>
+      <td mat-cell *matCellDef="let element; let i = dataIndex" class="selection-column">
+
+        <mat-checkbox *ngIf="config.canSelectRows" (click)="$event.stopPropagation()"
+          (change)="$event ? tongleElement(element) : null" [checked]="selection.isSelected(element)"
+          [aria-label]="checkboxLabel(element)" dynamicId>
+        </mat-checkbox>
+
+      </td>
+    </ng-container>
+
+    <ng-container *ngFor="let item of config.columns, let i = index" [matColumnDef]="item.key"
+      [sticky]="rows && rows.length>0 && item.sticky">
+      <th [ngClass]="getSortStyle(item.key)" mat-header-cell *matHeaderCellDef [attr.data-width]="item.style['width']"
+        [attr.data-min-width]="item.style['min-width']" [attr.data-max-width]="item.style['max-width']"
+        [resizeColumn]="isItemLastColumn(item)" dynamicId>
+        <div [mat-sort-header]="item.key" dynamicId [disabled]="!item.canSort">
+          <span dynamicId class="no-wrap-text-header">{{item.header | translate}} </span>
+        </div>
+      </th>
+
+      <td *matCellDef="let row; let i = dataIndex" [appTooltip]="item.formattedValue(row[item.key])"
+        matTooltipShowDelay="200" matTooltipHideDelay="200" matTooltipClass="custom-tooltip"
+        class="table-cell no-wrap-text" [class.text-link]="item.isLink"
+        [class.inactive]="(item.inactive && item.inactive.length > 0) ? !(row[item.inactive]) : false"
+        (click)="item.isLink && clickOnLink(item.key, i)" [style.cursor]="item.clickable ? 'pointer' : 'default'"
+        mat-cell dynamicId>
+        <div *ngIf="item.isExpandable(row)" class="d-flex flex-row justify-content-between align-items-center">
+          <a [ngClass]="selectTableTextClass(item, row)"
+            [innerHTML]="item.formattedValue(row[item.key]) | highlight: search : config.highlightColumns : item.key"
+            dynamicId></a>
+
+          <mat-icon svgIcon="custom-chevron" (click)="expandedElement==row?expandedElement=null:expandedElement=row" class="expandable"
+            [class.expanded]="expandedElement==row">
+          </mat-icon>
+        </div>
+        <a *ngIf="!item.isExpandable(row)" [ngClass]="selectTableTextClass(item, row)"
+          [innerHTML]="item.formattedValue(row[item.key]) | highlight: search : config.highlightColumns : item.key"
+          dynamicId></a>
+
+
+
+      </td>
+    </ng-container>
+
+    <!-- expandable row-->
+    <ng-container matColumnDef="expandedDetail">
+       <td *matCellDef="let element"  mat-cell [attr.colspan]="columnsToDisplay().length" >
+
+        <div class="expanded-detail-main"  [class.visible]="expandedElement==element"> 
+          <div class="expanded-detail-content">
+            <div class="expanded-detail-inner">
+              <ng-container   *ngTemplateOutlet="expandDetail;context:{row:element}"></ng-container>
+            </div>
+          </div>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay(); sticky: true;"></tr>
+    <tr mat-row [class.no-active]="config.isNoActive(element)" [class.link-open]="rowIndexLinkOpen==i"
+      [class.selected]="selection.isSelected(element)"
+      *matRowDef="let element; columns: columnsToDisplay(); let i = dataIndex"></tr>
+
+    <tr mat-row *matRowDef="let row; columns: expanableColumns" class="expand-detail-row"></tr>
+  </table>
+  <div *ngIf="isLoading" class="h-100 d-flex flex-row  align-items-center justify-content-center">
+
+    <mat-spinner></mat-spinner>
+
+  </div>
+  <ap-empty-section [options]="config.emptyTable" *ngIf="!isLoading && totalCount==0 && !search">
+  </ap-empty-section>
+  <div *ngIf="!isLoading && totalCount==0 && search"
+    class="h-100  d-flex flex-row  align-items-center justify-content-center">
+    <div>
+      <span>{{"noResultFound" |translate}}</span>
+    </div>
+  </div>
+</div>
+
+<div class="mat-table-paginator">
+  <mat-paginator [disabled]="isLoading" class="w-100" [length]="totalCount" [pageSizeOptions]="config.pageSizeOptions"
+    showFirstLastButtons (page)="paginationChange($event)" [pageSize]="config.pageSizeOptions[config.pageSizeIndex]">
+  </mat-paginator>
+</div>

@@ -1,0 +1,60 @@
+// GENERAL
+$very-light-border-size: 0.07rem;
+$primary-color: #056363;
+$primary-color-darker: #3b5e8d;
+$contrast-color: #fe5000;
+$small-font-size: 0.8rem;
+
+// TOP BAR
+$top-bar-height: 3.4rem;
+$top-bar-text-color: #ffffff;
+
+// MAIN PAGE
+$main-page-side-spacing: 12%;
+$main-page-background-color: #f8f8f8;
+$main-page-content-background-color: #ffffff;
+$main-page-content-margin: 0.8rem;
+
+// BOTTOM BAR
+$bottom-bar-background-color: #f8f8f8;
+$bottom-bar-border-color: #e1e2e3;
+$bottom-bar-text-color: #000000;
+$bottom-bar-height: 2.75rem;
+
+// TABLE
+$table-header-color: #e7e7e7;
+$table-header-height: 44px;
+$table-row-height: 2.5rem;
+$table-paginator-size: 3.2rem;
+
+// TEXT
+$text-normal-font-weight: 300;
+$text-normal-color: black;
+// ............
+
+//ICONS
+$icon-not-visited-color: #00a7f2;
+$icon-visited-color: #000000b2;
+// ............
+
+$primary-color-map: (
+  500: $primary-color,
+  contrast: (
+    500: white,
+  ),
+);
+
+$padding: 8px;
+$outer-border-color: $bottom-bar-border-color;
+// $primary-color-theme: mat.define-palette($primary-color-map);
+// $accent-color: mat.define-palette(mat.$deep-orange-palette);
+// $warn-color: mat.define-palette(mat.$deep-orange-palette);
+$outer-border: $very-light-border-size solid $outer-border-color;
+$primary-border: $very-light-border-size solid $primary-color;
+$button-font-size: 0.75em;
+$font-color: #056363;
+
+//SIDE BAR
+$label-text-color: rgba(black,0.87);
+$control-text-color: #000000DE;
+

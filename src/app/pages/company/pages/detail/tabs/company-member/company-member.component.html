@@ -1,0 +1,50 @@
+<div *ngIf="disabled">
+  <div class="grandParentContaniner">
+    <div class="parentContainer">
+      <ap-empty-section *ngIf="disabled" [options]="config">
+      </ap-empty-section>
+    </div>
+  </div>
+</div>
+
+
+<ap-sidebar *ngIf="!disabled" [(isOpen)]="isOpenSidebar" [sidebarContent]="sidebarContent"
+  [sidebarFooter]="sidebarFooter" [title]="sidebarData?.name">
+  <div class="no-overflow">
+    <ap-table [expandDetail]="expandDetail" [calcHeight]="165" [isOpenSidebar]="isOpenSidebar" [config]="tableConfig"
+      [data]="dataTable" (action)="onTableAction($event)"></ap-table>
+    <ng-template #expandDetail let-row="row">
+      <h4>{{'currentProjects'|translate}}</h4>
+      <div class="row arround-xs w-100 ">
+        <div class="col-xs-4" *ngFor="let name of row.currentProjects, let i = index">{{name}}</div>
+      </div>
+    </ng-template>
+  </div>
+</ap-sidebar>
+
+<ng-template #sidebarContent>
+  <ap-company-member-sidebar-detail [loading]="dataLoading" [isEdit]="isEdit" [data]="sidebarData"
+    (change)="onChange($event)" [companyId]="companyId"></ap-company-member-sidebar-detail>
+</ng-template>
+
+
+
+<ng-template #sidebarFooter>
+  <div class="mx-3 my-2 d-flex flex-row align-items-end justify-content-end w-100">
+    <div [matTooltip]="'youDontHaveRight'|translate" [matTooltipDisabled]="canEdit" matTooltipShowDelay="500"
+      matTooltipHideDelay="500" matTooltipClass="custom-tooltip">
+
+      <button *ngIf="!isEdit" [disabled]="!canEdit" mat-stroked-button (click)="isEdit=true"
+        class="mat-focus-indicator mat-stroked-button mat-button-base" dynamicId>{{'button_edit' | translate}}</button>
+    </div>
+    <button *ngIf="isEdit" mat-stroked-button (click)="isEdit=false"
+      class="mat-focus-indicator mat-stroked-button mat-button-base" dynamicId>{{'button_cancel' | translate
+      }}</button>
+
+
+    <button *ngIf="isEdit" mat-stroked-button (click)="save()"
+      class=" mx-2 mat-focus-indicator mat-stroked-button mat-button-base" dynamicId>{{'button_save' | translate
+      }}</button>
+
+  </div>
+</ng-template>

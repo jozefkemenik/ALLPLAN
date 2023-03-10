@@ -1,0 +1,27 @@
+.ap-dynid-dialog{ 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 90%;
+
+
+    table{
+      width:100%;
+      .mat-mdc-form-field {
+        font-size: 14px;
+        width: 100%;
+      }
+      td{
+        width:auto;
+      }
+      td.mat-column-hash {
+        width: 320px
+      }
+      
+      
+    }
+  .button {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

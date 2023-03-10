@@ -1,0 +1,47 @@
+@import "src/alldoc.variables.scss";
+
+ap-dynamic-control-main {
+    .dyn-c-row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+    .dyn-c-row:not(:last-child) {
+        padding-bottom: 14px;
+    }
+    .label {
+        color: $label-text-color;
+        text-align: left;
+        word-wrap: break-word;
+        width: 120px;
+        margin-right: 5px;
+     
+    }
+    .dyn-control {
+        color: $control-text-color;
+        width: 240px;
+        word-wrap: break-word;
+    }
+    .label,
+    .dyn-control {
+        font-size: 14px;
+        letter-spacing: 0px;
+        text-align: left;
+    }
+    .mat-form-field-appearance-outline {
+        /* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version. */
+        .mat-form-field-wrapper {
+            margin: 0;
+            padding-bottom: 0;
+        }
+        /* TODO(mdc-migration): The following rule targets internal classes of select that may no longer apply for the MDC version. */
+        .mat-select-arrow-wrapper {
+            transform: none;
+        }
+    }
+    /* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version. */
+    .mat-form-field-infix {
+        border-top: none;
+    }
+}

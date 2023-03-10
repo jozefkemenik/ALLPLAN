@@ -1,0 +1,34 @@
+<div class="dialog-delete-container">
+  <div class="dialog-delete-container-title">
+    <mat-icon class="dialog-icon" svgIcon="custom-attention-red">
+    </mat-icon>
+    <span>{{'deleteDocumentRevision' |translate}}</span>
+  </div>
+  <div class="dialog-delete-container-subtitle" [matTooltip]="subtitle" matTooltipPosition="below" #tooltip="matTooltip"
+    matTooltipShowDelay="500" matTooltipHideDelay="500" [matTooltipDisabled]="subtitle?.length > 42 ? false : true"
+    matTooltipClass="custom-tooltip">
+    {{subtitle|ellipsis:42}}</div>
+  <div class="dialog-delete-container-error" [class]="showErrorMessage ? 'show-error-message':'hide-error-message'">
+    <mat-icon class="dialog-icon" svgIcon="custom-error">
+    </mat-icon>
+    <span>{{errorMessage}}</span>
+  </div>
+  <div class="dialog-delete-container-message">
+    <section class="dialog-delete-container-message-section">
+      <mat-checkbox class="dialog-delete-container-message-checkbox" [(ngModel)]="checked">
+      </mat-checkbox>
+      <span class="dialog-delete-container-message-checkbox-text">{{'thisDocumentRevisionWillBePermanentlyDeletedIncludingAllTrackingInfo' |translate}}</span>
+    </section>
+  </div>
+  <div></div>
+  <div class="dialog-delete-container-btns">
+    <ap-shared-spinner-button [buttonLabel]="'button_delete'" [isLoading]="isLoading" [diameter]="20"
+      [mode]="'indeterminate'" [idBtn]="'adms-apProjectDocumentsRevisionDialogsDeleteBtnDelete'"
+      (buttonAction)="sendRequest('delete')" [disabled]="!checked">
+    </ap-shared-spinner-button>
+    <button mat-stroked-button class="dialog-delete-container-btns--2" [disabled]="false"
+      id="adms-apProjectDocumentsRevisionDialogsDeleteBtnCancel" (click)="sendRequest('cancel')">{{
+      'button_cancel'| translate}}
+    </button>
+  </div>
+</div>

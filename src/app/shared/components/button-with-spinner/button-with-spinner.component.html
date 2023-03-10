@@ -1,0 +1,8 @@
+<button mat-stroked-button class="btn-with-spinner" [disabled]="isLoading || disabled" (click)="clickAction($event)"
+  [id]="idBtn">
+  <mat-icon *ngIf="isLoading">
+    <mat-spinner [diameter]="diameter" [mode]="mode"></mat-spinner>
+  </mat-icon>
+  <span [class.mat-button-with-spinner]="isLoading"
+    [class.spanSpinner]="isLoading">{{buttonLabel|translate}}</span>
+</button>
